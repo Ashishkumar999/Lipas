@@ -10,6 +10,7 @@ def banner():
 
     GREEN = "\033[92m"
     CYAN = "\033[96m"
+    YELLOW = "\033[93m"
     RESET = "\033[0m"
 
     print(f"""{GREEN}
@@ -21,7 +22,12 @@ def banner():
 ███████╗██║██║     ██║  ██║███████║
 ╚══════╝╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝
 
-{CYAN}LIPAS v1.0{RESET}
+{CYAN}Lightweight Intelligent Penetration Assessment Suite{RESET}
+
+{YELLOW}[ Reconnaissance Framework ]{RESET}
+
+{CYAN}Version: 1.0{RESET}
+
 """)
 
 
