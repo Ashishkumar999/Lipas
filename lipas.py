@@ -5,29 +5,18 @@ from recon.ip_lookup import ip_lookup
 from recon.reverse_dns import reverse_dns
 from recon.whois_lookup import whois_lookup
 
+from scanner.port_scanner import scan_ports
+
 
 def banner():
 
-    GREEN = "\033[92m"
-    CYAN = "\033[96m"
-    YELLOW = "\033[93m"
-    RESET = "\033[0m"
-
-    print(f"""{GREEN}
-
-██╗     ██╗██████╗  █████╗ ███████╗
-██║     ██║██╔══██╗██╔══██╗██╔════╝
-██║     ██║██████╔╝███████║███████╗
-██║     ██║██╔═══╝ ██╔══██║╚════██║
-███████╗██║██║     ██║  ██║███████║
-╚══════╝╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝
-
-{CYAN}Lightweight Intelligent Penetration Assessment Suite{RESET}
-
-{YELLOW}[ Reconnaissance Framework ]{RESET}
-
-{CYAN}Version: 1.0{RESET}
-
+    print("""
+=========================================
+              LIPAS v1.0
+=========================================
+Lightweight Intelligent Penetration
+Assessment Suite
+=========================================
 """)
 
 
@@ -39,6 +28,7 @@ def main():
 
         print("Usage:")
         print("python lipas.py recon domain.com")
+        print("python lipas.py ports domain.com")
         return
 
     command = sys.argv[1]
@@ -54,6 +44,10 @@ def main():
 
         if ip:
             reverse_dns(ip)
+
+    elif command == "ports":
+
+        scan_ports(target)
 
     else:
 
