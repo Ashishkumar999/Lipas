@@ -2,6 +2,7 @@ from recon.dns_lookup import dns_lookup
 from recon.ip_lookup import ip_lookup
 from recon.reverse_dns import reverse_dns
 from recon.whois_lookup import whois_lookup
+from recon.subdomain_enum import subdomain_enum
 
 from scanner.port_scanner import scan_ports
 from scanner.header_analyzer import analyze_headers
@@ -50,6 +51,8 @@ def full_scan(target):
 
     detect_technology(target)
 
+    subdomain_enum(target)
+
     generate_report(target)
 
 def menu():
@@ -67,7 +70,8 @@ def menu():
         print("4. Full Scan")
         print("5. Technology Detection")
         print("6. Generate Report")
-        print("7. Exit")
+        print("7. Subdomain Enumeration")
+        print("8. Exit")
 
         choice = input("\nSelect Option: ")
 
@@ -96,6 +100,10 @@ def menu():
             generate_report(target)
 
         elif choice == "7":
+
+            subdomain_enum(target)
+
+        elif choice == "8":
 
             print("\nExiting LIPAS...")
             break
