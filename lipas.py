@@ -7,6 +7,7 @@ from recon.subdomain_enum import subdomain_enum
 from scanner.port_scanner import scan_ports
 from scanner.header_analyzer import analyze_headers
 from scanner.tech_detector import detect_technology
+from scanner.banner_grabber import banner_grab
 
 from reports.report_generator import generate_report
 
@@ -71,7 +72,8 @@ def menu():
         print("5. Technology Detection")
         print("6. Generate Report")
         print("7. Subdomain Enumeration")
-        print("8. Exit")
+        print("8. Banner Grabbing")
+        print("9. Exit")
 
         choice = input("\nSelect Option: ")
 
@@ -104,6 +106,10 @@ def menu():
             subdomain_enum(target)
 
         elif choice == "8":
+
+            banner_grab(target)
+
+        elif choice == "9":
 
             print("\nExiting LIPAS...")
             break

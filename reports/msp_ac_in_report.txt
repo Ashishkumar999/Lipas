@@ -1,0 +1,24 @@
+========================================
+LIPAS VAPT REPORT
+========================================
+
+Target : msp.ac.in
+Date   : 2026-06-10 14:33:52.503273
+
+[DNS ENUMERATION]
+Completed
+
+[WHOIS LOOKUP]
+Completed
+
+[PORT SCAN]
+Completed
+
+[HEADER ANALYSIS]
+Completed
+
+[TECHNOLOGY DETECTION]
+Completed
+
+OVERALL STATUS
+Scan Completed Successfully
