@@ -5,6 +5,7 @@ from recon.whois_lookup import whois_lookup
 
 from scanner.port_scanner import scan_ports
 from scanner.header_analyzer import analyze_headers
+from scanner.tech_detector import detect_technology
 
 
 def banner():
@@ -43,6 +44,8 @@ def full_scan(target):
 
     analyze_headers(target)
 
+    detect_technology(target)
+
 
 def menu():
 
@@ -57,7 +60,8 @@ def menu():
         print("2. Port Scanner")
         print("3. Header Analysis")
         print("4. Full Scan")
-        print("5. Exit")
+        print("5. Technology Detection")
+        print("6. Exit")
 
         choice = input("\nSelect Option: ")
 
@@ -79,8 +83,12 @@ def menu():
 
         elif choice == "5":
 
-            print("\nExiting LIPAS...")
-            break
+            detect_technology(target)
+
+        elif choice == "6":
+
+           print("\nExiting LIPAS...")
+           break
 
         else:
 
