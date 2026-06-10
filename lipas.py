@@ -1,5 +1,6 @@
 import sys
 
+from scanner.port_scanner import scan_ports
 from recon.dns_lookup import dns_lookup
 from recon.ip_lookup import ip_lookup
 from recon.reverse_dns import reverse_dns
