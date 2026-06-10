@@ -38,7 +38,9 @@ def recon_scan(target):
 
 def full_scan(target):
 
-    print("\n[+] Starting Full Scan\n")
+    print("\n[+] Starting Full Scan")
+
+    print("[+] Report will be generated automatically\n")
 
     recon_scan(target)
 
