@@ -1,3 +1,5 @@
+FOUND_DIRS = []
+
 import requests
 
 
@@ -41,11 +43,13 @@ def dir_discovery(target):
 
             if response.status_code in [200, 301, 302, 403]:
 
-                print(
-                    f"[{response.status_code}] {url}"
-                )
+               result = f"[{response.status_code}] {url}"
 
-                found += 1
+               print(result)
+
+               FOUND_DIRS.append(result)
+
+               found += 1
 
         except:
 

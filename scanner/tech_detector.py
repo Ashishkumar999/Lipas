@@ -1,3 +1,5 @@
+TECH_RESULTS = []
+
 import requests
 
 
@@ -31,24 +33,31 @@ def detect_technology(target):
 
         if "cloudflare" in str(headers).lower():
             technologies.append("Cloudflare")
+            TECH_RESULTS.append("Cloudflare")
 
         if "wordpress" in html:
             technologies.append("WordPress")
+            TECH_RESULTS.append("WordPress")
 
         if "react" in html:
             technologies.append("React")
+            TECH_RESULTS.append("WordPress")
 
         if "angular" in html:
             technologies.append("Angular")
+            TECH_RESULTS.append("Angular")
 
         if "vue" in html:
             technologies.append("Vue.js")
+            TECH_RESULTS.append("Vue.js")
 
         if "bootstrap" in html:
             technologies.append("Bootstrap")
+            TECH_RESULTS.append("Bootstrap")
 
         if "jquery" in html:
             technologies.append("jQuery")
+            TECH_RESULTS.append("jQuery")
 
         print("\nDetected Technologies:\n")
 

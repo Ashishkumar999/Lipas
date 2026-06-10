@@ -1,3 +1,5 @@
+FOUND_SUBDOMAINS = []
+
 import socket
 
 
@@ -39,6 +41,8 @@ def subdomain_enum(domain):
             print(f"[+] {target} -> {ip}")
 
             found.append(target)
+
+            FOUND_SUBDOMAINS.append(target)
 
         except:
 

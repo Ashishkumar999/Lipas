@@ -1,0 +1,36 @@
+=====================================
+LIPAS VAPT REPORT
+=====================================
+
+Target : github.com
+Date   : 2026-06-10 16:11:56.450606
+
+OPEN PORTS
+----------
+22/tcp OPEN - SSH
+80/tcp OPEN - HTTP
+443/tcp OPEN - HTTPS
+
+TECHNOLOGIES
+------------
+WordPress
+
+DIRECTORIES
+-----------
+[200] https://github.com/login
+[302] https://github.com/dashboard
+[200] https://github.com/backup
+[200] https://github.com/uploads
+[200] https://github.com/config
+[200] https://github.com/test
+[200] https://github.com/dev
+[200] https://github.com/robots.txt
+
+SUBDOMAINS
+----------
+www.github.com
+api.github.com
+test.github.com
+admin.github.com
+blog.github.com
+shop.github.com

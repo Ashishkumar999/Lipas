@@ -1,5 +1,9 @@
-import os
 from datetime import datetime
+
+from scanner.port_scanner import OPEN_PORTS
+from scanner.tech_detector import TECH_RESULTS
+from scanner.dir_discovery import FOUND_DIRS
+from recon.subdomain_enum import FOUND_SUBDOMAINS
 
 
 def generate_report(target):
@@ -8,18 +12,10 @@ def generate_report(target):
 
     report_file = f"reports/{filename}_report.txt"
 
-    os.makedirs(
-        "reports",
-        exist_ok=True
-    )
-
-    with open(
-        report_file,
-        "w"
-    ) as report:
+    with open(report_file, "w") as report:
 
         report.write(
-            "=" * 40 + "\n"
+            "=====================================\n"
         )
 
         report.write(
@@ -27,7 +23,7 @@ def generate_report(target):
         )
 
         report.write(
-            "=" * 40 + "\n\n"
+            "=====================================\n\n"
         )
 
         report.write(
@@ -39,52 +35,66 @@ def generate_report(target):
         )
 
         report.write(
-            "[DNS ENUMERATION]\n"
+            "OPEN PORTS\n"
         )
 
         report.write(
-            "Completed\n\n"
+            "----------\n"
+        )
+
+        for port in OPEN_PORTS:
+
+            report.write(
+                port + "\n"
+            )
+
+        report.write("\n")
+
+        report.write(
+            "TECHNOLOGIES\n"
         )
 
         report.write(
-            "[WHOIS LOOKUP]\n"
+            "------------\n"
+        )
+
+        for tech in TECH_RESULTS:
+
+            report.write(
+                tech + "\n"
+            )
+
+        report.write("\n")
+
+        report.write(
+            "DIRECTORIES\n"
         )
 
         report.write(
-            "Completed\n\n"
+            "-----------\n"
+        )
+
+        for item in FOUND_DIRS:
+
+            report.write(
+                item + "\n"
+            )
+
+        report.write("\n")
+
+        report.write(
+            "SUBDOMAINS\n"
         )
 
         report.write(
-            "[PORT SCAN]\n"
+            "----------\n"
         )
 
-        report.write(
-            "Completed\n\n"
-        )
+        for sub in FOUND_SUBDOMAINS:
 
-        report.write(
-            "[HEADER ANALYSIS]\n"
-        )
-
-        report.write(
-            "Completed\n\n"
-        )
-
-        report.write(
-            "[TECHNOLOGY DETECTION]\n"
-        )
-
-        report.write(
-            "Completed\n\n"
-        )
-
-        report.write(
-            "OVERALL STATUS\n"
-        )
-
-        report.write(
-            "Scan Completed Successfully\n"
-        )
+            report.write(
+                sub + "\n"
+            )
 
     print(
         f"\n[+] Report Saved: {report_file}"

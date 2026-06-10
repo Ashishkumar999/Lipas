@@ -1,3 +1,5 @@
+OPEN_PORTS = []
+
 import socket
 import threading
 
@@ -40,9 +42,11 @@ def check_port(host, port):
                 "UNKNOWN"
             )
 
-            print(
-                f"{port}/tcp OPEN - {service}"
-            )
+            result = f"{port}/tcp OPEN - {service}"
+
+            print(result)
+
+            OPEN_PORTS.append(result)
 
         sock.close()
 
