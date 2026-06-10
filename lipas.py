@@ -1,5 +1,6 @@
 import sys
 
+from scanner.header_analyzer import analyze_headers
 from scanner.port_scanner import scan_ports
 from recon.dns_lookup import dns_lookup
 from recon.ip_lookup import ip_lookup
@@ -30,6 +31,7 @@ def main():
         print("Usage:")
         print("python lipas.py recon domain.com")
         print("python lipas.py ports domain.com")
+        print("python lipas.py headers domain.com")
         return
 
     command = sys.argv[1]
@@ -49,6 +51,10 @@ def main():
     elif command == "ports":
 
         scan_ports(target)
+
+    elif command == "headers":
+
+       analyze_headers(target)
 
     else:
 
