@@ -8,6 +8,7 @@ from scanner.port_scanner import scan_ports
 from scanner.header_analyzer import analyze_headers
 from scanner.tech_detector import detect_technology
 from scanner.banner_grabber import banner_grab
+from scanner.http_checker import http_checker
 
 from reports.report_generator import generate_report
 
@@ -73,7 +74,8 @@ def menu():
         print("6. Generate Report")
         print("7. Subdomain Enumeration")
         print("8. Banner Grabbing")
-        print("9. Exit")
+        print("9. HTTP Status Checker")
+        print("0. Exit")
 
         choice = input("\nSelect Option: ")
 
@@ -111,8 +113,12 @@ def menu():
 
         elif choice == "9":
 
-            print("\nExiting LIPAS...")
-            break
+            http_checker(target)
+
+        elif choice == "0":
+
+             print("\nExiting LIPAS...")
+             break
 
         else:
 
