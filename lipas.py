@@ -1,65 +1,91 @@
-import sys
-
-from scanner.header_analyzer import analyze_headers
-from scanner.port_scanner import scan_ports
 from recon.dns_lookup import dns_lookup
 from recon.ip_lookup import ip_lookup
 from recon.reverse_dns import reverse_dns
 from recon.whois_lookup import whois_lookup
 
 from scanner.port_scanner import scan_ports
+from scanner.header_analyzer import analyze_headers
 
 
 def banner():
 
     print("""
-=========================================
-              LIPAS v1.0
-=========================================
+==================================================
+                    LIPAS v1.0
+==================================================
+
 Lightweight Intelligent Penetration
 Assessment Suite
-=========================================
+
+==================================================
 """)
 
 
-def main():
+def recon_scan(target):
+
+    dns_lookup(target)
+
+    whois_lookup(target)
+
+    ip = ip_lookup(target)
+
+    if ip:
+        reverse_dns(ip)
+
+
+def full_scan(target):
+
+    print("\n[+] Starting Full Scan\n")
+
+    recon_scan(target)
+
+    scan_ports(target)
+
+    analyze_headers(target)
+
+
+def menu():
 
     banner()
 
-    if len(sys.argv) != 3:
+    target = input("Enter Target Domain: ").strip()
 
-        print("Usage:")
-        print("python lipas.py recon domain.com")
-        print("python lipas.py ports domain.com")
-        print("python lipas.py headers domain.com")
-        return
+    while True:
 
-    command = sys.argv[1]
-    target = sys.argv[2]
+        print("\n========== MENU ==========")
+        print("1. Reconnaissance")
+        print("2. Port Scanner")
+        print("3. Header Analysis")
+        print("4. Full Scan")
+        print("5. Exit")
 
-    if command == "recon":
+        choice = input("\nSelect Option: ")
 
-        dns_lookup(target)
+        if choice == "1":
 
-        whois_lookup(target)
+            recon_scan(target)
 
-        ip = ip_lookup(target)
+        elif choice == "2":
 
-        if ip:
-            reverse_dns(ip)
+            scan_ports(target)
 
-    elif command == "ports":
+        elif choice == "3":
 
-        scan_ports(target)
+            analyze_headers(target)
 
-    elif command == "headers":
+        elif choice == "4":
 
-       analyze_headers(target)
+            full_scan(target)
 
-    else:
+        elif choice == "5":
 
-        print("Unknown command")
+            print("\nExiting LIPAS...")
+            break
+
+        else:
+
+            print("\nInvalid Option")
 
 
 if __name__ == "__main__":
-    main()
+    menu()
