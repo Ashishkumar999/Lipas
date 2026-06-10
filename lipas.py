@@ -9,6 +9,7 @@ from scanner.header_analyzer import analyze_headers
 from scanner.tech_detector import detect_technology
 from scanner.banner_grabber import banner_grab
 from scanner.http_checker import http_checker
+from scanner.dir_discovery import dir_discovery
 
 from reports.report_generator import generate_report
 
@@ -75,6 +76,7 @@ def menu():
         print("7. Subdomain Enumeration")
         print("8. Banner Grabbing")
         print("9. HTTP Status Checker")
+        print("10. Directory Discovery")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -114,6 +116,10 @@ def menu():
         elif choice == "9":
 
             http_checker(target)
+
+        elif choice == "10":
+
+            dir_discovery(target)
 
         elif choice == "0":
 
