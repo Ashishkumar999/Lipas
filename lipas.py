@@ -7,6 +7,8 @@ from scanner.port_scanner import scan_ports
 from scanner.header_analyzer import analyze_headers
 from scanner.tech_detector import detect_technology
 
+from reports.report_generator import generate_report
+
 
 def banner():
 
@@ -46,6 +48,7 @@ def full_scan(target):
 
     detect_technology(target)
 
+    generate_report(target)
 
 def menu():
 
@@ -61,7 +64,8 @@ def menu():
         print("3. Header Analysis")
         print("4. Full Scan")
         print("5. Technology Detection")
-        print("6. Exit")
+        print("6. Generate Report")
+        print("7. Exit")
 
         choice = input("\nSelect Option: ")
 
@@ -87,8 +91,12 @@ def menu():
 
         elif choice == "6":
 
-           print("\nExiting LIPAS...")
-           break
+            generate_report(target)
+
+        elif choice == "7":
+
+            print("\nExiting LIPAS...")
+            break
 
         else:
 
