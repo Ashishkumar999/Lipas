@@ -11,6 +11,7 @@ from scanner.banner_grabber import banner_grab
 from scanner.http_checker import http_checker
 from scanner.dir_discovery import dir_discovery
 from scanner.screenshot import take_screenshot
+from scanner.ssl_inspector import ssl_inspector
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -81,6 +82,7 @@ def menu():
         print("10. Directory Discovery")
         print("11. Export HTML Report")
         print("12. Website Screenshot")
+        print("13. SSL Inspector")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -132,6 +134,10 @@ def menu():
         elif choice == "12":
 
            take_screenshot(target)
+
+        elif choice == "13":
+
+           ssl_inspector(target)
 
         elif choice == "0":
 
