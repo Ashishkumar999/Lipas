@@ -10,6 +10,7 @@ from scanner.tech_detector import detect_technology
 from scanner.banner_grabber import banner_grab
 from scanner.http_checker import http_checker
 from scanner.dir_discovery import dir_discovery
+from scanner.screenshot import take_screenshot
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -79,6 +80,7 @@ def menu():
         print("9. HTTP Status Checker")
         print("10. Directory Discovery")
         print("11. Export HTML Report")
+        print("12. Website Screenshot")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -126,6 +128,10 @@ def menu():
         elif choice == "11":
 
             generate_html_report(target)
+
+        elif choice == "12":
+
+           take_screenshot(target)
 
         elif choice == "0":
 
