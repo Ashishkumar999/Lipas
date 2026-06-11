@@ -19,12 +19,14 @@ from scanner.security_score import security_score
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
 
+from config.version import VERSION
+
 
 def banner():
 
-    print("""
+   print(f"""
 ==================================================
-                    LIPAS v1.0
+                LIPAS v{VERSION}
 ==================================================
 
 Lightweight Intelligent Penetration

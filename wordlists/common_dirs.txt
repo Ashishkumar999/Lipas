@@ -1,0 +1,11 @@
+admin
+login
+dashboard
+backup
+uploads
+config
+api
+test
+dev
+robots.txt
+sitemap.xml

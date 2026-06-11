@@ -1,21 +1,18 @@
-FOUND_DIRS = []
-
 import requests
 
 
-WORDLIST = [
-    "admin",
-    "login",
-    "dashboard",
-    "api",
-    "backup",
-    "uploads",
-    "config",
-    "test",
-    "dev",
-    "robots.txt",
-    "sitemap.xml"
-]
+FOUND_DIRS = []
+
+
+with open(
+    "wordlists/common_dirs.txt"
+) as file:
+
+    WORDLIST = [
+        line.strip()
+        for line in file
+        if line.strip()
+    ]
 
 
 def dir_discovery(target):
@@ -25,7 +22,10 @@ def dir_discovery(target):
     print("=" * 50 + "\n")
 
     if not target.startswith("http"):
-        target = "https://" + target
+
+        target = (
+            "https://" + target
+        )
 
     found = 0
 
@@ -41,18 +41,30 @@ def dir_discovery(target):
                 allow_redirects=False
             )
 
-            if response.status_code in [200, 301, 302, 403]:
+            if response.status_code in [
+                200,
+                301,
+                302,
+                403
+            ]:
 
-               result = f"[{response.status_code}] {url}"
+                result = (
+                    f"[{response.status_code}] "
+                    f"{url}"
+                )
 
-               print(result)
+                print(result)
 
-               FOUND_DIRS.append(result)
+                FOUND_DIRS.append(
+                    result
+                )
 
-               found += 1
+                found += 1
 
-        except:
+        except Exception:
 
             pass
 
-    print(f"\nTotal Found: {found}")
+    print(
+        f"\nTotal Found: {found}"
+    )
