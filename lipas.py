@@ -14,6 +14,7 @@ from scanner.screenshot import take_screenshot
 from scanner.ssl_inspector import ssl_inspector
 from scanner.dns_security import dns_security_check
 from scanner.security_headers import security_headers_check
+from scanner.security_score import security_score
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -87,6 +88,7 @@ def menu():
         print("13. SSL Inspector")
         print("14. DNS Security Check")
         print("15. Security Headers Audit")
+        print("16. Security Scorecard")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -150,6 +152,10 @@ def menu():
         elif choice == "15":
 
            security_headers_check(target)
+
+        elif choice == "16":
+
+           security_score()
 
         elif choice == "0":
 
