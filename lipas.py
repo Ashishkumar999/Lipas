@@ -48,6 +48,10 @@ from scanner.robots_analyzer import (
 from scanner.backup_discovery import (
     backup_discovery
 )
+from scanner.parameter_finder import (
+    parameter_finder
+)
+
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -180,6 +184,7 @@ def menu():
         print("40. JavaScript Intelligence")
         print("41. Robots.txt Analyzer")
         print("42. Backup File Discovery")
+        print("43. Hidden Parameter Finder")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -363,6 +368,10 @@ def menu():
         elif choice == "42":
 
             backup_discovery()
+
+        elif choice == "43":
+
+            parameter_finder()
 
         elif choice == "0":
 
