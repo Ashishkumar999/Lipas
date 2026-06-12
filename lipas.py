@@ -62,6 +62,11 @@ from ai.prioritization import (
     vulnerability_prioritization
 )
 
+from profiles.profile_menu import (
+    profile_menu
+)
+
+
 from config.version import VERSION
 
 
@@ -150,7 +155,8 @@ def menu():
         print("30. Export Findings JSON")
         print("31. CVE Intelligence")
         print("32. Vulnerability Prioritization")
-        print("33. Asset Inventory") 
+        print("33. Asset Inventory")
+        print("34. Scan Profiles")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -296,6 +302,12 @@ def menu():
         elif choice == "33":
 
             asset_inventory()
+
+        elif choice == "34":
+
+            profile_menu(
+                target
+            )
 
         elif choice == "0":
 
