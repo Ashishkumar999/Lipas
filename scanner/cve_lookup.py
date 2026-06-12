@@ -35,19 +35,19 @@ def cve_lookup():
         software
     )
 
-   if results:
+    if results:
 
-    CVE_RESULTS.extend(
-        results
-    )
+        CVE_RESULTS.extend(
+            results
+        )
 
-    print(
-        "\nKnown References:\n"
-    )
+        print(
+            "\nKnown References:\n"
+        )
 
-    for cve in results:
+        for cve in results:
 
-        print(cve)
+            print(cve)
 
     else:
 

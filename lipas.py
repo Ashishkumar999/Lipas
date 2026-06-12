@@ -22,8 +22,13 @@ from scanner.service_detector import detect_service
 from scanner.banner_fingerprint import (
     banner_fingerprint
 )
+
 from scanner.cve_lookup import cve_lookup
 from scanner.multi_target_scan import multi_target_scan
+from reports.risk_dashboard import (
+    risk_dashboard
+)
+
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -107,6 +112,7 @@ def menu():
         print("21. Banner Fingerprinting")
         print("22. CVE Lookup")
         print("23. Multi Target Scan")
+        print("24. Risk Dashboard") 
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -209,9 +215,13 @@ def menu():
 
             cve_lookup()
 
-       elif choice == "23":
+        elif choice == "23":
 
-          multi_target_scan()
+            multi_target_scan()
+
+        elif choice == "24":
+
+            risk_dashboard()
 
         elif choice == "0":
 
