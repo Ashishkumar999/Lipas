@@ -13,7 +13,7 @@ def export_findings_json():
 
         with open(
             "reports/output/findings.json",
-            "w"
+            "w",
             encoding="utf-8"
         ) as file:
 

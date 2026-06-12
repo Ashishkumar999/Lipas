@@ -1,4 +1,4 @@
-import socket
+import requests
 
 
 FINGERPRINT_RESULTS = []
@@ -7,67 +7,62 @@ FINGERPRINT_RESULTS = []
 def banner_fingerprint(target):
 
     print("\n" + "=" * 50)
-    print("LIPAS BANNER FINGERPRINTING")
+    print("LIPAS BANNER FINGERPRINT")
     print("=" * 50 + "\n")
 
-    ports = [
-        21,
-        22,
-        25,
-        80,
-        110,
-        143,
-        443,
-        3306,
-        8080
-    ]
+    if not target.startswith(
+        "http"
+    ):
 
-    for port in ports:
+        target = (
+            "https://" + target
+        )
 
-        try:
+    try:
 
-            sock = socket.socket(
-                socket.AF_INET,
-                socket.SOCK_STREAM
+        response = requests.get(
+            target,
+            timeout=5
+        )
+
+        server = response.headers.get(
+            "Server"
+        )
+
+        powered_by = response.headers.get(
+            "X-Powered-By"
+        )
+
+        FINGERPRINT_RESULTS.clear()
+
+        if server:
+
+            print(
+                f"Server: {server}"
             )
 
-            sock.settimeout(3)
-
-            sock.connect(
-                (target, port)
+            FINGERPRINT_RESULTS.append(
+                server
             )
 
-            if port in [80, 443, 8080]:
+        if powered_by:
 
-                request = (
-                    b"HEAD / HTTP/1.0\r\n\r\n"
-                )
-
-                sock.send(
-                    request
-                )
-
-            banner = sock.recv(
-                1024
-            ).decode(
-                errors="ignore"
+            print(
+                f"X-Powered-By: {powered_by}"
             )
 
-            if banner:
+            FINGERPRINT_RESULTS.append(
+                powered_by
+            )
 
-                result = (
-                    f"[{port}] "
-                    f"{banner[:100]}"
-                )
+        if not server and not powered_by:
 
-                print(result)
+            print(
+                "No fingerprint data found."
+            )
 
-                FINGERPRINT_RESULTS.append(
-                    result
-                )
+    except Exception as e:
 
-            sock.close()
-
-        except:
-
-            pass
+        print(
+            f"Error: {e}"
+        )

@@ -52,6 +52,9 @@ from reports.json_export import (
 from ai.risk_advisor import (
     risk_advisor
 )
+from ai.cve_intelligence import (
+    cve_intelligence
+)
 
 from config.version import VERSION
 
@@ -139,6 +142,7 @@ def menu():
         print("28. Attack Surface Map")
         print("29. Asset Correlation")
         print("30. Export Findings JSON")
+        print("31. CVE Intelligence")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -272,6 +276,10 @@ def menu():
         elif choice == "30":
 
             export_findings_json()
+
+        elif choice == "31":
+
+            cve_intelligence()
 
         elif choice == "0":
 
