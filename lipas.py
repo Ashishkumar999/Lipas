@@ -69,19 +69,15 @@ from profiles.profile_menu import (
 
 from config.version import VERSION
 
+from core.banner import (
+    show_banner
+)
+from core.health_check import (
+    health_check
+)
 
-def banner():
 
-   print(f"""
-==================================================
-                LIPAS v{VERSION}
-==================================================
 
-Lightweight Intelligent Penetration
-Assessment Suite
-
-==================================================
-""")
 
 
 def recon_scan(target):
@@ -116,7 +112,7 @@ def full_scan(target):
 
 def menu():
 
-    banner()
+    show_banner()
 
     target = input("Enter Target Domain: ").strip()
 
@@ -157,6 +153,7 @@ def menu():
         print("32. Vulnerability Prioritization")
         print("33. Asset Inventory")
         print("34. Scan Profiles")
+        print("35. Health Check")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -308,6 +305,10 @@ def menu():
             profile_menu(
                 target
             )
+
+        elif choice == "35":
+
+            health_check()
 
         elif choice == "0":
 
