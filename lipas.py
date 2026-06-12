@@ -22,6 +22,7 @@ from scanner.service_detector import detect_service
 from scanner.banner_fingerprint import (
     banner_fingerprint
 )
+from scanner.cve_lookup import cve_lookup
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -103,6 +104,7 @@ def menu():
         print("19. Fast Port Scanner")
         print("20. Service Detection")
         print("21. Banner Fingerprinting")
+        print("22. CVE Lookup")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -200,6 +202,10 @@ def menu():
             banner_fingerprint(
                target
             )
+
+        elif choice == "21":
+
+            cve_lookup()
 
         elif choice == "0":
 
