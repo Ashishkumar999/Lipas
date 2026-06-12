@@ -36,6 +36,10 @@ from reports.findings import (
     show_findings
 )
 
+from ai.risk_advisor import (
+    risk_advisor
+)
+
 from config.version import VERSION
 
 
@@ -117,6 +121,7 @@ def menu():
         print("23. Multi Target Scan")
         print("24. Risk Dashboard")
         print("25. Finding Manager")
+        print("26. AI Risk Advisor") 
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -230,6 +235,10 @@ def menu():
         elif choice == "25":
 
             show_findings()
+
+        elif choice == "26":
+
+            risk_advisor()
 
         elif choice == "0":
 
