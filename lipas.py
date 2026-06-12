@@ -36,6 +36,9 @@ from reports.risk_dashboard import (
 from scanner.api_scanner import (
     api_scanner
 )
+from scanner.sensitive_file_discovery import (
+    sensitive_file_discovery
+)
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -164,6 +167,7 @@ def menu():
         print("36. API Security Scanner")
         print("37. CORS Analyzer")
         print("38. JWT Analyzer")
+        print("39. Sensitive File Discovery") 
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -331,6 +335,10 @@ def menu():
         elif choice == "38":
 
             jwt_analyzer()
+
+        elif choice == "39":
+
+            sensitive_file_discovery()
 
         elif choice == "0":
 
