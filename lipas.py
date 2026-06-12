@@ -42,6 +42,9 @@ from scanner.sensitive_file_discovery import (
 from scanner.js_intelligence import (
     js_intelligence
 )
+from scanner.robots_analyzer import (
+    robots_analyzer
+)
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -172,6 +175,7 @@ def menu():
         print("38. JWT Analyzer")
         print("39. Sensitive File Discovery")
         print("40. JavaScript Intelligence")
+        print("41. Robots.txt Analyzer")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -347,6 +351,10 @@ def menu():
         elif choice == "40":
 
              js_intelligence()
+
+        elif choice == "41":
+
+             robots_analyzer()
 
         elif choice == "0":
 
