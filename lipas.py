@@ -45,6 +45,9 @@ from scanner.js_intelligence import (
 from scanner.robots_analyzer import (
     robots_analyzer
 )
+from scanner.backup_discovery import (
+    backup_discovery
+)
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -176,6 +179,7 @@ def menu():
         print("39. Sensitive File Discovery")
         print("40. JavaScript Intelligence")
         print("41. Robots.txt Analyzer")
+        print("42. Backup File Discovery")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -355,6 +359,10 @@ def menu():
         elif choice == "41":
 
              robots_analyzer()
+
+        elif choice == "42":
+
+            backup_discovery()
 
         elif choice == "0":
 
