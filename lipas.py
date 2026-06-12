@@ -38,6 +38,9 @@ from reports.findings import (
 from reports.executive_summary import (
     executive_summary
 )
+from reports.attack_surface import (
+    attack_surface
+)
 
 from ai.risk_advisor import (
     risk_advisor
@@ -126,6 +129,7 @@ def menu():
         print("25. Finding Manager")
         print("26. AI Risk Advisor")
         print("27. Executive Summary")
+        print("28. Attack Surface Map")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -247,6 +251,10 @@ def menu():
         elif choice == "27":
 
             executive_summary()
+
+        elif choice == "28":
+
+            attack_surface()
 
         elif choice == "0":
 
