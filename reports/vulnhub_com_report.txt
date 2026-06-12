@@ -1,0 +1,26 @@
+=====================================
+LIPAS VAPT REPORT
+=====================================
+
+Target : vulnhub.com
+Date   : 2026-06-12 14:39:53.163196
+
+OPEN PORTS
+----------
+80/tcp OPEN - http
+443/tcp OPEN - https
+8080/tcp OPEN - http-alt
+
+TECHNOLOGIES
+------------
+Cloudflare
+Bootstrap
+jQuery
+
+DIRECTORIES
+-----------
+
+SUBDOMAINS
+----------
+www.vulnhub.com
+staging.vulnhub.com

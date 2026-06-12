@@ -28,7 +28,9 @@ from scanner.multi_target_scan import multi_target_scan
 from reports.risk_dashboard import (
     risk_dashboard
 )
-
+from scanner.api_scanner import (
+    api_scanner
+)
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -154,6 +156,7 @@ def menu():
         print("33. Asset Inventory")
         print("34. Scan Profiles")
         print("35. Health Check")
+        print("36. API Security Scanner")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -309,6 +312,10 @@ def menu():
         elif choice == "35":
 
             health_check()
+
+        elif choice == "36":
+
+            api_scanner()
 
         elif choice == "0":
 
