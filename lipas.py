@@ -73,6 +73,11 @@ from reports.json_export import (
 from reports.asset_inventory import (
     asset_inventory
 )
+from reports.technology_profile import (
+    technology_profile
+)
+
+
 
 
 from ai.risk_advisor import (
@@ -185,6 +190,7 @@ def menu():
         print("41. Robots.txt Analyzer")
         print("42. Backup File Discovery")
         print("43. Hidden Parameter Finder")
+        print("44. Technology Profile")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -372,6 +378,10 @@ def menu():
         elif choice == "43":
 
             parameter_finder()
+
+        elif choice == "44":
+
+            technology_profile()
 
         elif choice == "0":
 
