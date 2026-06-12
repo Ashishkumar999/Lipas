@@ -1,6 +1,9 @@
 from reports.findings import FINDINGS
 
 
+SUMMARY_RESULTS = {}
+
+
 def executive_summary():
 
     print("\n" + "=" * 50)
@@ -15,9 +18,7 @@ def executive_summary():
 
     for finding in FINDINGS:
 
-        severity = (
-            finding["severity"]
-        )
+        severity = finding["severity"]
 
         if severity == "HIGH":
 
@@ -30,6 +31,11 @@ def executive_summary():
         else:
 
             low += 1
+
+    SUMMARY_RESULTS["total"] = total
+    SUMMARY_RESULTS["high"] = high
+    SUMMARY_RESULTS["medium"] = medium
+    SUMMARY_RESULTS["low"] = low
 
     print(
         f"Total Findings : {total}"
@@ -47,7 +53,7 @@ def executive_summary():
         f"Low Risk       : {low}"
     )
 
-    print("\nOverall Assessment:")
+    print("\nOverall Assessment:\n")
 
     if high > 0:
 
@@ -61,8 +67,16 @@ def executive_summary():
             "Moderate security improvements recommended."
         )
 
+    elif low > 0:
+
+        print(
+            "Minor security improvements recommended."
+        )
+
     else:
 
         print(
-            "Security posture appears acceptable."
+            "No significant findings detected."
         )
+
+    print("\n" + "=" * 50)
