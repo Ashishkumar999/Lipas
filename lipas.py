@@ -47,6 +47,9 @@ from reports.asset_correlation import (
 from reports.json_export import (
     export_findings_json
 )
+from reports.asset_inventory import (
+    asset_inventory
+)
 
 
 from ai.risk_advisor import (
@@ -147,6 +150,7 @@ def menu():
         print("30. Export Findings JSON")
         print("31. CVE Intelligence")
         print("32. Vulnerability Prioritization")
+        print("33. Asset Inventory") 
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -288,6 +292,10 @@ def menu():
         elif choice == "32":
 
             vulnerability_prioritization()
+
+        elif choice == "33":
+
+            asset_inventory()
 
         elif choice == "0":
 
