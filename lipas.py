@@ -18,6 +18,7 @@ from scanner.security_score import security_score
 from scanner.custom_port_scan import custom_port_scan
 from scanner.full_port_scan import full_port_scan
 from scanner.threaded_port_scan import threaded_port_scan
+from scanner.service_detector import detect_service
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -97,6 +98,7 @@ def menu():
         print("17. Custom Port Scan")
         print("18. Full Port Scan")
         print("19. Fast Port Scanner")
+        print("20. Service Detection")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -184,6 +186,10 @@ def menu():
            threaded_port_scan(
               target
            )
+
+        elif choice == "20":
+
+           detect_service(target)
 
         elif choice == "0":
 
