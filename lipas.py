@@ -25,6 +25,9 @@ from scanner.banner_fingerprint import (
 from scanner.cors_analyzer import (
     cors_analyzer
 )
+from scanner.jwt_analyzer import (
+    jwt_analyzer
+)
 from scanner.cve_lookup import cve_lookup
 from scanner.multi_target_scan import multi_target_scan
 from reports.risk_dashboard import (
@@ -159,7 +162,8 @@ def menu():
         print("34. Scan Profiles")
         print("35. Health Check")
         print("36. API Security Scanner")
-        print("37. CORS Analyzer") 
+        print("37. CORS Analyzer")
+        print("38. JWT Analyzer")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -323,6 +327,10 @@ def menu():
         elif choice == "37":
 
             cors_analyzer()
+
+        elif choice == "38":
+
+            jwt_analyzer()
 
         elif choice == "0":
 
