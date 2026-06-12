@@ -1,55 +1,94 @@
-HEADER_RESULTS = []
-
 import requests
 
+from reports.findings import (
+    add_finding
+)
 
-SECURITY_HEADERS = [
-    "Content-Security-Policy",
-    "Strict-Transport-Security",
-    "X-Frame-Options",
-    "X-Content-Type-Options",
-    "Referrer-Policy",
-    "Permissions-Policy"
-]
+HEADER_RESULTS = []
 
 
 def security_headers_check(target):
 
     print("\n" + "=" * 50)
-    print("LIPAS SECURITY HEADERS AUDITOR")
+    print("LIPAS SECURITY HEADERS")
     print("=" * 50 + "\n")
+
+    if not target.startswith(
+        "http"
+    ):
+
+        target = (
+            "https://" + target
+        )
+
+    headers_to_check = [
+
+        "Content-Security-Policy",
+
+        "Strict-Transport-Security",
+
+        "X-Frame-Options",
+
+        "X-Content-Type-Options",
+
+        "Referrer-Policy"
+    ]
 
     try:
 
-        if not target.startswith("http"):
-            target = "https://" + target
-
         response = requests.get(
             target,
-            timeout=10
+            timeout=5
         )
 
-        headers = response.headers
+        for header in headers_to_check:
 
-        print("\nSecurity Header Results\n")
+            if header in response.headers:
 
-        for header in SECURITY_HEADERS:
+                result = (
+                    f"[FOUND] {header}"
+                )
 
-            if header in headers:
+                print(result)
 
-               result = f"[FOUND] {header}"
-
-               print(result)
-
-               HEADER_RESULTS.append(result)
+                HEADER_RESULTS.append(
+                    result
+                )
 
             else:
 
-               result = f"[MISSING] {header}"
+                result = (
+                    f"[MISSING] {header}"
+                )
 
-               print(result)
+                print(result)
 
-               HEADER_RESULTS.append(result)
+                HEADER_RESULTS.append(
+                    result
+                )
+
+                severity = "LOW"
+
+                if header == (
+                    "Content-Security-Policy"
+                ):
+
+                    severity = "HIGH"
+
+                elif header == (
+                    "Strict-Transport-Security"
+                ):
+
+                    severity = "MEDIUM"
+
+                add_finding(
+
+                    severity,
+
+                    f"Missing {header}",
+
+                    f"Implement {header}"
+                )
 
     except Exception as e:
 

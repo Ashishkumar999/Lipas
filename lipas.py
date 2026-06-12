@@ -32,6 +32,9 @@ from reports.risk_dashboard import (
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
+from reports.findings import (
+    show_findings
+)
 
 from config.version import VERSION
 
@@ -112,7 +115,8 @@ def menu():
         print("21. Banner Fingerprinting")
         print("22. CVE Lookup")
         print("23. Multi Target Scan")
-        print("24. Risk Dashboard") 
+        print("24. Risk Dashboard")
+        print("25. Finding Manager")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -222,6 +226,10 @@ def menu():
         elif choice == "24":
 
             risk_dashboard()
+
+        elif choice == "25":
+
+            show_findings()
 
         elif choice == "0":
 
