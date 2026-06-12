@@ -3,6 +3,10 @@ from datetime import datetime
 from scanner.port_scanner import OPEN_PORTS
 from scanner.tech_detector import TECH_RESULTS
 from scanner.dir_discovery import FOUND_DIRS
+from scanner.banner_fingerprint import (
+    FINGERPRINT_RESULTS
+)
+
 from recon.subdomain_enum import FOUND_SUBDOMAINS
 
 

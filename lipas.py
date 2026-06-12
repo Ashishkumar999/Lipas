@@ -19,6 +19,9 @@ from scanner.custom_port_scan import custom_port_scan
 from scanner.full_port_scan import full_port_scan
 from scanner.threaded_port_scan import threaded_port_scan
 from scanner.service_detector import detect_service
+from scanner.banner_fingerprint import (
+    banner_fingerprint
+)
 
 from reports.report_generator import generate_report
 from reports.html_report import generate_html_report
@@ -99,6 +102,7 @@ def menu():
         print("18. Full Port Scan")
         print("19. Fast Port Scanner")
         print("20. Service Detection")
+        print("21. Banner Fingerprinting")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -190,6 +194,12 @@ def menu():
         elif choice == "20":
 
            detect_service(target)
+
+        elif choice == "21":
+
+            banner_fingerprint(
+               target
+            )
 
         elif choice == "0":
 
