@@ -35,6 +35,9 @@ from reports.html_report import generate_html_report
 from reports.findings import (
     show_findings
 )
+from reports.executive_summary import (
+    executive_summary
+)
 
 from ai.risk_advisor import (
     risk_advisor
@@ -121,7 +124,8 @@ def menu():
         print("23. Multi Target Scan")
         print("24. Risk Dashboard")
         print("25. Finding Manager")
-        print("26. AI Risk Advisor") 
+        print("26. AI Risk Advisor")
+        print("27. Executive Summary")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -239,6 +243,10 @@ def menu():
         elif choice == "26":
 
             risk_advisor()
+
+        elif choice == "27":
+
+            executive_summary()
 
         elif choice == "0":
 
