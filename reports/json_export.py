@@ -1,29 +1,38 @@
 import json
 
-from reports.findings_db import (
-    FINDINGS_DB
-)
+from reports.findings import FINDINGS
 
 
-def export_json(target):
+def export_findings_json():
 
-    filename = (
-        target.replace(".", "_")
-    )
+    print("\n" + "=" * 50)
+    print("LIPAS JSON EXPORT")
+    print("=" * 50 + "\n")
 
-    path = (
-        f"assessments/"
-        f"{filename}_findings.json"
-    )
+    try:
 
-    with open(path, "w") as file:
+        with open(
+            "reports/output/findings.json",
+            "w"
+            encoding="utf-8"
+        ) as file:
 
-        json.dump(
-            FINDINGS_DB,
-            file,
-            indent=4
+            json.dump(
+                FINDINGS,
+                file,
+                indent=4
+            )
+
+        print(
+            "Export Successful."
         )
 
-    print(
-        f"Saved: {path}"
-    )
+        print(
+            "Saved as reports/output/findings.json"
+        )
+
+    except Exception as e:
+
+        print(
+            f"Error: {e}"
+        )

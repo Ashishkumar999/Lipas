@@ -44,6 +44,10 @@ from reports.attack_surface import (
 from reports.asset_correlation import (
     asset_correlation
 )
+from reports.json_export import (
+    export_findings_json
+)
+
 
 from ai.risk_advisor import (
     risk_advisor
@@ -133,7 +137,8 @@ def menu():
         print("26. AI Risk Advisor")
         print("27. Executive Summary")
         print("28. Attack Surface Map")
-        print("29. Asset Correlation") 
+        print("29. Asset Correlation")
+        print("30. Export Findings JSON")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -263,6 +268,10 @@ def menu():
         elif choice == "29":
 
             asset_correlation()
+
+        elif choice == "30":
+
+            export_findings_json()
 
         elif choice == "0":
 
