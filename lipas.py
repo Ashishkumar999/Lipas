@@ -55,6 +55,9 @@ from ai.risk_advisor import (
 from ai.cve_intelligence import (
     cve_intelligence
 )
+from ai.prioritization import (
+    vulnerability_prioritization
+)
 
 from config.version import VERSION
 
@@ -143,6 +146,7 @@ def menu():
         print("29. Asset Correlation")
         print("30. Export Findings JSON")
         print("31. CVE Intelligence")
+        print("32. Vulnerability Prioritization")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -280,6 +284,10 @@ def menu():
         elif choice == "31":
 
             cve_intelligence()
+
+        elif choice == "32":
+
+            vulnerability_prioritization()
 
         elif choice == "0":
 
