@@ -86,7 +86,9 @@ from reports.database_viewer import (
 from intelligence.intelligence_viewer import (
     intelligence_viewer
 )
-
+from intelligence.risk_dashboard_v2 import (
+    risk_dashboard_v2
+)
 
 
 from ai.risk_advisor import (
@@ -207,6 +209,7 @@ def menu():
         print("45. Attack Surface Intelligence")
         print("46. OWASP Intelligence")
         print("47. Finding Database")
+        print("48. Enterprise Risk Dashboard")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -410,6 +413,10 @@ def menu():
         elif choice == "47":
 
             database_viewer()
+
+        elif choice == "48":
+
+            risk_dashboard_v2()
 
         elif choice == "0":
 
