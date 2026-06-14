@@ -89,6 +89,10 @@ from ai.cve_intelligence import (
 from ai.prioritization import (
     vulnerability_prioritization
 )
+from ai.attack_surface import (
+    attack_surface_report
+)
+
 
 from profiles.profile_menu import (
     profile_menu
@@ -191,6 +195,7 @@ def menu():
         print("42. Backup File Discovery")
         print("43. Hidden Parameter Finder")
         print("44. Technology Profile")
+        print("45. Attack Surface Intelligence")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -382,6 +387,10 @@ def menu():
         elif choice == "44":
 
             technology_profile()
+
+        elif choice == "45":
+
+            attack_surface_report()
 
         elif choice == "0":
 
