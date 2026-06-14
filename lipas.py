@@ -100,6 +100,11 @@ from intelligence.risk_dashboard_v2 import (
 from intelligence.explanation_viewer import (
     explanation_viewer
 )
+from intelligence.attack_path_engine import (
+    attack_path_engine
+)
+
+
 
 
 from ai.risk_advisor import (
@@ -224,6 +229,7 @@ def menu():
         print("49. Vulnerability Explanations")
         print("50. Executive Report")
         print("51. Export Executive Report")
+        print("52. Attack Path Analysis")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -443,6 +449,10 @@ def menu():
         elif choice == "51":
 
             export_executive_report()
+
+        elif choice == "52":
+
+             attack_path_engine()
 
         elif choice == "0":
 
