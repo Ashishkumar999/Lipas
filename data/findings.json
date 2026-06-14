@@ -1,0 +1,17 @@
+[
+    {
+        "id": "TEST-001",
+        "title": "Test Finding"
+    },
+    {
+        "id": "LIPAS-001",
+        "title": "Missing CSP",
+        "severity": "HIGH",
+        "owasp": "A05",
+        "cvss": 8.0,
+        "impact": "Impact analysis pending",
+        "remediation": "Implement CSP",
+        "asset": "Unknown"
+    },
+
+]

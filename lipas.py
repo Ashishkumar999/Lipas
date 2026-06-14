@@ -76,6 +76,11 @@ from reports.asset_inventory import (
 from reports.technology_profile import (
     technology_profile
 )
+from reports.database_viewer import (
+    database_viewer
+)
+
+
 
 
 from intelligence.intelligence_viewer import (
@@ -201,6 +206,7 @@ def menu():
         print("44. Technology Profile")
         print("45. Attack Surface Intelligence")
         print("46. OWASP Intelligence")
+        print("47. Finding Database")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -400,6 +406,10 @@ def menu():
         elif choice == "46":
 
             intelligence_viewer()
+
+        elif choice == "47":
+
+            database_viewer()
 
         elif choice == "0":
 
