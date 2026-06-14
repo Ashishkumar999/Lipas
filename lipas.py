@@ -138,6 +138,14 @@ from core.health_check import (
 
 
 
+from network.asset_discovery import (
+    asset_discovery
+)
+
+from network.network_dashboard import (
+    network_dashboard
+)
+
 
 def recon_scan(target):
 
@@ -230,6 +238,8 @@ def menu():
         print("50. Executive Report")
         print("51. Export Executive Report")
         print("52. Attack Path Analysis")
+        print("53. Network Asset Discovery")
+        print("54. Network Dashboard")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -453,6 +463,14 @@ def menu():
         elif choice == "52":
 
              attack_path_engine()
+
+        elif choice == "53":
+
+            asset_discovery()
+
+        elif choice == "54":
+
+            network_dashboard()
 
         elif choice == "0":
 
