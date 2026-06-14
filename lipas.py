@@ -89,6 +89,9 @@ from intelligence.intelligence_viewer import (
 from intelligence.risk_dashboard_v2 import (
     risk_dashboard_v2
 )
+from intelligence.explanation_viewer import (
+    explanation_viewer
+)
 
 
 from ai.risk_advisor import (
@@ -210,6 +213,7 @@ def menu():
         print("46. OWASP Intelligence")
         print("47. Finding Database")
         print("48. Enterprise Risk Dashboard")
+        print("49. Vulnerability Explanations")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -417,6 +421,10 @@ def menu():
         elif choice == "48":
 
             risk_dashboard_v2()
+
+        elif choice == "49":
+
+            explanation_viewer()
 
         elif choice == "0":
 
