@@ -78,6 +78,10 @@ from reports.technology_profile import (
 )
 
 
+from intelligence.intelligence_viewer import (
+    intelligence_viewer
+)
+
 
 
 from ai.risk_advisor import (
@@ -196,6 +200,7 @@ def menu():
         print("43. Hidden Parameter Finder")
         print("44. Technology Profile")
         print("45. Attack Surface Intelligence")
+        print("46. OWASP Intelligence")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -391,6 +396,10 @@ def menu():
         elif choice == "45":
 
             attack_surface_report()
+
+        elif choice == "46":
+
+            intelligence_viewer()
 
         elif choice == "0":
 
