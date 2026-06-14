@@ -147,6 +147,18 @@ from network.network_dashboard import (
 )
 
 
+
+from core.target_manager import (
+
+    set_target,
+
+    get_target,
+
+    show_target
+)
+
+
+
 def recon_scan(target):
 
     dns_lookup(target)
@@ -169,7 +181,7 @@ def full_scan(target):
 
     scan_ports(target)
 
-    analyze_headers(target)
+    analyze_headers()
 
     detect_technology(target)
 
@@ -181,7 +193,13 @@ def menu():
 
     show_banner()
 
-    target = input("Enter Target Domain: ").strip()
+    target = input(
+       "Enter Target: "
+    ).strip()
+
+    set_target(
+        target
+    )
 
     while True:
 
@@ -240,6 +258,7 @@ def menu():
         print("52. Attack Path Analysis")
         print("53. Network Asset Discovery")
         print("54. Network Dashboard")
+        print("55. Show Current Target")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -254,7 +273,7 @@ def menu():
 
         elif choice == "3":
 
-            analyze_headers(target)
+            analyze_headers()
 
         elif choice == "4":
 
@@ -471,6 +490,10 @@ def menu():
         elif choice == "54":
 
             network_dashboard()
+
+        elif choice == "55":
+
+            show_target()
 
         elif choice == "0":
 

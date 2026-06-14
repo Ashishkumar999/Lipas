@@ -1,18 +1,41 @@
 import requests
 
-SECURITY_HEADERS = {
-    "Content-Security-Policy": "HIGH",
-    "Strict-Transport-Security": "MEDIUM",
-    "X-Frame-Options": "MEDIUM",
-    "X-Content-Type-Options": "LOW",
-    "Referrer-Policy": "LOW"
-}
+from core.target_manager import (
+    get_target
+)
 
 
-def analyze_headers(target):
+def analyze_headers():
 
-    if not target.startswith("http"):
-        target = "https://" + target
+    target = get_target()
+
+    if not target:
+
+        print(
+            "\nNo target selected."
+        )
+
+        return
+
+    if not target.startswith(
+        "http"
+    ):
+
+        target = (
+            "https://" + target
+        )
+
+    print(
+        "\n" + "=" * 50
+    )
+
+    print(
+        "LIPAS HEADER ANALYZER"
+    )
+
+    print(
+        "=" * 50 + "\n"
+    )
 
     try:
 
@@ -21,44 +44,20 @@ def analyze_headers(target):
             timeout=10
         )
 
-        headers = response.headers
+        print(
+            f"Target: {target}\n"
+        )
 
-        print("\n" + "=" * 50)
-        print("LIPAS SECURITY HEADER ANALYZER")
-        print("=" * 50 + "\n")
+        for header, value in (
+            response.headers.items()
+        ):
 
-        high = 0
-        medium = 0
-        low = 0
-
-        for header, severity in SECURITY_HEADERS.items():
-
-            if header not in headers:
-
-                print(
-                    f"[{severity}] Missing {header}"
-                )
-
-                if severity == "HIGH":
-                    high += 1
-
-                elif severity == "MEDIUM":
-                    medium += 1
-
-                else:
-                    low += 1
-
-            else:
-
-                print(
-                    f"[OK] {header}"
-                )
-
-        print("\nSUMMARY")
-        print(f"HIGH   : {high}")
-        print(f"MEDIUM : {medium}")
-        print(f"LOW    : {low}")
+            print(
+                f"{header}: {value}"
+            )
 
     except Exception as e:
 
-        print(f"Error: {e}")
+        print(
+            f"\nError: {e}"
+        )
