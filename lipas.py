@@ -79,6 +79,14 @@ from reports.technology_profile import (
 from reports.database_viewer import (
     database_viewer
 )
+from reporting.executive_report import (
+    executive_report
+)
+
+from reporting.export_executive_report import (
+    export_executive_report
+)
+
 
 
 
@@ -214,6 +222,8 @@ def menu():
         print("47. Finding Database")
         print("48. Enterprise Risk Dashboard")
         print("49. Vulnerability Explanations")
+        print("50. Executive Report")
+        print("51. Export Executive Report")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -425,6 +435,14 @@ def menu():
         elif choice == "49":
 
             explanation_viewer()
+
+        elif choice == "50":
+
+            executive_report()
+
+        elif choice == "51":
+
+            export_executive_report()
 
         elif choice == "0":
 
