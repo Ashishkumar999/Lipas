@@ -140,6 +140,9 @@ from core.asset_viewer import (
 from core.asset_details import (
     asset_details
 )
+from core.dashboard import (
+    dashboard
+)
 
 
 
@@ -265,7 +268,8 @@ def menu():
         print("54. Network Dashboard")
         print("55. Show Current Target")
         print("56. Asset Database")
-        print("57. Asset Details") 
+        print("57. Asset Details")
+        print("58. Enterprise Dashboard")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -509,6 +513,10 @@ def menu():
         elif choice == "57":
 
             asset_details()
+
+        elif choice == "58":
+
+            dashboard()
 
         elif choice == "0":
 
