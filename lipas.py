@@ -134,6 +134,9 @@ from core.banner import (
 from core.health_check import (
     health_check
 )
+from core.asset_viewer import (
+    asset_viewer
+)
 
 
 
@@ -179,7 +182,7 @@ def full_scan(target):
 
     recon_scan(target)
 
-    scan_ports(target)
+    scan_ports()
 
     analyze_headers()
 
@@ -259,6 +262,7 @@ def menu():
         print("53. Network Asset Discovery")
         print("54. Network Dashboard")
         print("55. Show Current Target")
+        print("56. Asset Database")
         print("0. Exit")
 
         choice = input("\nSelect Option: ")
@@ -269,7 +273,7 @@ def menu():
 
         elif choice == "2":
 
-            scan_ports(target)
+            scan_ports()
 
         elif choice == "3":
 
@@ -349,7 +353,7 @@ def menu():
 
         elif choice == "20":
 
-           detect_service(target)
+           detect_service()
 
         elif choice == "21":
 
@@ -494,6 +498,10 @@ def menu():
         elif choice == "55":
 
             show_target()
+
+        elif choice == "56":
+
+            asset_viewer()
 
         elif choice == "0":
 

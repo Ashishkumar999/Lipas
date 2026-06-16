@@ -3,30 +3,7 @@ LIPAS VAPT REPORT
 =====================================
 
 Target : msp.ac.in
-Date   : 2026-06-11 11:20:51.114291
+Date   : 2026-06-16 08:29:45.171584
 
 OPEN PORTS
 ----------
-443/tcp OPEN - HTTPS
-80/tcp OPEN - HTTP
-
-TECHNOLOGIES
-------------
-
-DIRECTORIES
------------
-[403] https://msp.ac.in/admin
-[403] https://msp.ac.in/login
-[403] https://msp.ac.in/dashboard
-[403] https://msp.ac.in/api
-[403] https://msp.ac.in/backup
-[403] https://msp.ac.in/uploads
-[403] https://msp.ac.in/config
-[403] https://msp.ac.in/test
-[403] https://msp.ac.in/dev
-[403] https://msp.ac.in/robots.txt
-[403] https://msp.ac.in/sitemap.xml
-
-SUBDOMAINS
-----------
-www.msp.ac.in

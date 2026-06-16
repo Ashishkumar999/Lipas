@@ -1,0 +1,23 @@
+=====================================
+LIPAS VAPT REPORT
+=====================================
+
+Target : www.aiims.edu
+Date   : 2026-06-16 12:24:19.346011
+
+OPEN PORTS
+----------
+Port 22
+Port 443
+
+TECHNOLOGIES
+------------
+Angular
+Bootstrap
+jQuery
+
+DIRECTORIES
+-----------
+
+SUBDOMAINS
+----------

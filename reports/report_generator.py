@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 
 from scanner.port_scanner import OPEN_PORTS
@@ -8,11 +9,21 @@ from recon.subdomain_enum import FOUND_SUBDOMAINS
 
 def generate_report(target):
 
-    filename = target.replace(".", "_")
+    filename = re.sub(
+        r"[^a-zA-Z0-9_-]",
+        "_",
+        target
+    )
 
-    report_file = f"reports/{filename}_report.txt"
+    report_file = (
+        f"reports/{filename}_report.txt"
+    )
 
-    with open(report_file, "w") as report:
+    with open(
+        report_file,
+        "w",
+        encoding="utf-8"
+    ) as report:
 
         report.write(
             "=====================================\n"
@@ -45,7 +56,7 @@ def generate_report(target):
         for port in OPEN_PORTS:
 
             report.write(
-                port + "\n"
+                f"Port {port}\n"
             )
 
         report.write("\n")
@@ -61,7 +72,7 @@ def generate_report(target):
         for tech in TECH_RESULTS:
 
             report.write(
-                tech + "\n"
+                f"{tech}\n"
             )
 
         report.write("\n")
@@ -77,7 +88,7 @@ def generate_report(target):
         for item in FOUND_DIRS:
 
             report.write(
-                item + "\n"
+                f"{item}\n"
             )
 
         report.write("\n")
@@ -93,7 +104,7 @@ def generate_report(target):
         for sub in FOUND_SUBDOMAINS:
 
             report.write(
-                sub + "\n"
+                f"{sub}\n"
             )
 
     print(

@@ -1,22 +1,78 @@
 import socket
 
-from config.settings import (
-    COMMON_PORTS,
-    DEFAULT_TIMEOUT
+from core.target_manager import (
+    get_target
 )
+
+from core.asset_manager import (
+    add_port
+)
+
+from core.ui import (
+    success,
+    banner
+)
+
+
+from rich.console import Console
+from rich.panel import Panel
+
 
 OPEN_PORTS = []
 
+console = Console()
 
-def scan_ports(target):
 
-    print("\n" + "=" * 50)
-    print("LIPAS PORT SCANNER")
-    print("=" * 50 + "\n")
+def scan_ports():
 
-    ports = COMMON_PORTS
+    target = get_target()
 
-    for port in ports:
+    if not target:
+
+        console.print(
+            "[red]No target selected.[/red]"
+        )
+
+        return
+
+    console.print()
+
+    console.print(
+
+        Panel.fit(
+
+            "[bold cyan]LIPAS PORT SCANNER[/bold cyan]",
+
+            border_style="bright_blue"
+
+        )
+
+    )
+
+    console.print(
+        f"[yellow]Target:[/yellow] {target}"
+    )
+
+    console.print()
+
+    common_ports = [
+
+        21,
+        22,
+        23,
+        25,
+        53,
+        80,
+        110,
+        143,
+        443,
+        445,
+        3306,
+        3389
+
+    ]
+
+    for port in common_ports:
 
         try:
 
@@ -26,34 +82,31 @@ def scan_ports(target):
             )
 
             sock.settimeout(
-                DEFAULT_TIMEOUT
+                1
             )
 
             result = sock.connect_ex(
-                (target, port)
+                (
+                    target,
+                    port
+                )
             )
 
             if result == 0:
 
-                try:
+                if port not in OPEN_PORTS:
 
-                    service = socket.getservbyport(
+                    OPEN_PORTS.append(
                         port
                     )
 
-                except:
-
-                    service = "unknown"
-
-                output = (
-                    f"{port}/tcp OPEN - "
-                    f"{service}"
+                success(
+                    f"Port {port} Open"
                 )
 
-                print(output)
-
-                OPEN_PORTS.append(
-                    output
+                add_port(
+                    target,
+                    port
                 )
 
             sock.close()
@@ -61,5 +114,3 @@ def scan_ports(target):
         except Exception:
 
             pass
-
-    print("\nScan Completed.")

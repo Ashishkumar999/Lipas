@@ -1,66 +1,52 @@
 import socket
 
+from core.target_manager import (
+    get_target
+)
+
+from core.asset_manager import (
+    add_service
+)
+
+from core.ui import (
+    banner,
+    success
+)
 
 SERVICE_RESULTS = []
 
 
-COMMON_SERVICES = {
+def detect_service():
 
-    21: "FTP",
+    target = get_target()
 
-    22: "OpenSSH",
+    if not target:
 
-    25: "SMTP",
+        return
 
-    53: "DNS",
+    banner(
+        "LIPAS SERVICE DETECTOR"
+    )
 
-    80: "HTTP",
+    services = {
 
-    110: "POP3",
+        21: "FTP",
+        22: "SSH",
+        25: "SMTP",
+        53: "DNS",
+        80: "HTTP",
+        110: "POP3",
+        143: "IMAP",
+        443: "HTTPS",
+        445: "SMB",
+        3306: "MySQL",
+        3389: "RDP"
 
-    143: "IMAP",
+    }
 
-    443: "HTTPS",
-
-    3306: "MySQL",
-
-    5432: "PostgreSQL",
-
-    6379: "Redis",
-
-    8080: "HTTP Alternate"
-}
-
-
-def detect_service(target):
-
-    print("\n" + "=" * 50)
-    print("LIPAS SERVICE DETECTOR")
-    print("=" * 50 + "\n")
-
-    ports = [
-        21,
-        22,
-        25,
-        53,
-        80,
-        110,
-        143,
-        443,
-        3306,
-        5432,
-        6379,
-        8080
-    ]
-
-    for port in ports:
+    for port, service in services.items():
 
         try:
-
-            service = COMMON_SERVICES.get(
-                port,
-                "Unknown"
-            )
 
             sock = socket.socket(
                 socket.AF_INET,
@@ -70,19 +56,27 @@ def detect_service(target):
             sock.settimeout(1)
 
             result = sock.connect_ex(
-                (target, port)
+                (
+                    target,
+                    port
+                )
             )
 
             if result == 0:
 
-                output = (
-                    f"[OPEN] {port} -> {service}"
+                if service not in SERVICE_RESULTS:
+
+                    SERVICE_RESULTS.append(
+                        service
+                    )
+
+                success(
+                    f"{service} Detected on Port {port}"
                 )
 
-                print(output)
-
-                SERVICE_RESULTS.append(
-                    output
+                add_service(
+                    target,
+                    service
                 )
 
             sock.close()
@@ -90,5 +84,3 @@ def detect_service(target):
         except Exception:
 
             pass
-
-    print("\nService Detection Completed.")
