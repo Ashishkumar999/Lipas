@@ -188,7 +188,7 @@ def full_scan(target):
 
     analyze_headers()
 
-    detect_technology(target)
+    detect_technology()
 
     subdomain_enum(target)
 
@@ -288,7 +288,7 @@ def menu():
 
         elif choice == "5":
 
-            detect_technology(target)
+            detect_technology()
 
         elif choice == "6":
 

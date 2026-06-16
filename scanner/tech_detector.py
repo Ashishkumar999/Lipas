@@ -1,12 +1,45 @@
-TECH_RESULTS = []
-
 import requests
 
+from core.target_manager import (
+    get_target
+)
 
-def detect_technology(target):
+from core.asset_manager import (
+    add_technology
+)
 
-    if not target.startswith("http"):
-        target = "https://" + target
+from core.ui import (
+    banner,
+    success,
+    warning
+)
+
+TECH_RESULTS = []
+
+
+def detect_technology():
+
+    target = get_target()
+
+    if not target:
+
+        warning(
+            "No Target Selected"
+        )
+
+        return
+
+    if not target.startswith(
+        "http"
+    ):
+
+        target = (
+            "https://" + target
+        )
+
+    banner(
+        "LIPAS TECHNOLOGY DETECTOR"
+    )
 
     try:
 
@@ -16,60 +49,82 @@ def detect_technology(target):
         )
 
         headers = response.headers
-        html = response.text.lower()
 
-        print("\n" + "=" * 50)
-        print("LIPAS TECHNOLOGY DETECTOR")
-        print("=" * 50 + "\n")
+        html = response.text.lower()
 
         server = headers.get(
             "Server",
             "Unknown"
         )
 
-        print(f"Server : {server}")
+        success(
+            f"Server: {server}"
+        )
+
+        add_technology(
+            get_target(),
+            server
+        )
 
         technologies = []
 
-        if "cloudflare" in str(headers).lower():
-            technologies.append("Cloudflare")
-            TECH_RESULTS.append("Cloudflare")
+        signatures = {
 
-        if "wordpress" in html:
-            technologies.append("WordPress")
-            TECH_RESULTS.append("WordPress")
+            "wordpress": "WordPress",
 
-        if "react" in html:
-            technologies.append("React")
-            TECH_RESULTS.append("WordPress")
+            "react": "React",
 
-        if "angular" in html:
-            technologies.append("Angular")
-            TECH_RESULTS.append("Angular")
+            "angular": "Angular",
 
-        if "vue" in html:
-            technologies.append("Vue.js")
-            TECH_RESULTS.append("Vue.js")
+            "vue": "Vue.js",
 
-        if "bootstrap" in html:
-            technologies.append("Bootstrap")
-            TECH_RESULTS.append("Bootstrap")
+            "bootstrap": "Bootstrap",
 
-        if "jquery" in html:
-            technologies.append("jQuery")
-            TECH_RESULTS.append("jQuery")
+            "jquery": "jQuery"
 
-        print("\nDetected Technologies:\n")
+        }
+
+        for key, value in signatures.items():
+
+            if key in html:
+
+                technologies.append(
+                    value
+                )
+
+        if "cloudflare" in str(
+            headers
+        ).lower():
+
+            technologies.append(
+                "Cloudflare"
+            )
 
         if technologies:
 
             for tech in technologies:
-                print(f"[+] {tech}")
+
+                success(
+                    f"Detected: {tech}"
+                )
+
+                TECH_RESULTS.append(
+                    tech
+                )
+
+                add_technology(
+                    get_target(),
+                    tech
+                )
 
         else:
 
-            print("No technologies detected")
+            warning(
+                "No Technologies Detected"
+            )
 
     except Exception as e:
 
-        print(f"Error: {e}")
+        warning(
+            str(e)
+        )

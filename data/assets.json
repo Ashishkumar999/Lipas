@@ -23,9 +23,11 @@
             "HTTP",
             "HTTPS"
         ],
-        "technologies": [],
+        "technologies": [
+            "gws"
+        ],
         "findings": [],
-        "risk_score": 0
+        "risk_score": 18
     },
     {
         "target": "https://www.aiims.edu/index.php/en",
@@ -54,7 +56,10 @@
             443
         ],
         "services": [],
-        "technologies": [],
+        "technologies": [
+            "github.com",
+            "React"
+        ],
         "findings": [],
         "risk_score": 0
     }

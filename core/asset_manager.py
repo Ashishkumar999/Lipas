@@ -1,23 +1,10 @@
 import json
 
+from core.risk_engine import (
+    calculate_risk
+)
 
 ASSET_DB = "data/assets.json"
-
-
-
-def show_asset_details(
-    target
-):
-
-    asset = get_asset(
-        target
-    )
-
-    if not asset:
-
-        return None
-
-    return asset
 
 
 def load_assets():
@@ -39,7 +26,9 @@ def load_assets():
         return []
 
 
-def save_assets(assets):
+def save_assets(
+    assets
+):
 
     with open(
         ASSET_DB,
@@ -54,7 +43,9 @@ def save_assets(assets):
         )
 
 
-def create_asset(target):
+def create_asset(
+    target
+):
 
     assets = load_assets()
 
@@ -85,7 +76,9 @@ def create_asset(target):
     )
 
 
-def get_asset(target):
+def get_asset(
+    target
+):
 
     assets = load_assets()
 
@@ -96,6 +89,29 @@ def get_asset(target):
             return asset
 
     return None
+
+
+def update_risk_score(
+    target
+):
+
+    assets = load_assets()
+
+    for asset in assets:
+
+        if asset["target"] == target:
+
+            asset["risk_score"] = (
+
+                calculate_risk(
+                    asset
+                )
+
+            )
+
+    save_assets(
+        assets
+    )
 
 
 def add_port(
@@ -119,6 +135,10 @@ def add_port(
         assets
     )
 
+    update_risk_score(
+        target
+    )
+
 
 def add_service(
     target,
@@ -141,13 +161,14 @@ def add_service(
         assets
     )
 
+    update_risk_score(
+        target
+    )
 
-def add_service(
 
+def add_technology(
     target,
-
-    service
-
+    technology
 ):
 
     assets = load_assets()
@@ -156,12 +177,25 @@ def add_service(
 
         if asset["target"] == target:
 
-            if service not in asset["services"]:
+            if technology not in asset["technologies"]:
 
-                asset["services"].append(
-                    service
+                asset["technologies"].append(
+                    technology
                 )
 
     save_assets(
         assets
+    )
+
+    update_risk_score(
+        target
+    )
+
+
+def show_asset_details(
+    target
+):
+
+    return get_asset(
+        target
     )

@@ -1,5 +1,5 @@
-from rich.table import Table
 from rich.console import Console
+from rich.table import Table
 from rich.panel import Panel
 
 from core.asset_manager import (
@@ -21,7 +21,9 @@ def asset_viewer():
 
             "[bold cyan]LIPAS ENTERPRISE ASSET DATABASE[/bold cyan]",
 
-            border_style="bright_blue"
+            border_style="bright_blue",
+
+            padding=(1, 5)
 
         )
 
@@ -32,7 +34,7 @@ def asset_viewer():
     if not assets:
 
         console.print(
-            "[red]No Assets Found[/red]"
+            "[bold red]No Assets Found[/bold red]"
         )
 
         return
@@ -41,13 +43,16 @@ def asset_viewer():
 
         show_header=True,
 
-        header_style="bold white"
+        header_style="bold white",
+
+        border_style="bright_blue"
 
     )
 
     table.add_column(
         "Target",
-        style="cyan"
+        style="cyan",
+        no_wrap=True
     )
 
     table.add_column(
@@ -76,11 +81,33 @@ def asset_viewer():
 
     table.add_column(
         "Risk",
-        justify="center",
-        style="bright_red"
+        justify="center"
     )
 
     for asset in assets:
+
+        risk = asset.get(
+            "risk_score",
+            0
+        )
+
+        if risk >= 70:
+
+            risk_display = (
+                f"🔴 {risk}"
+            )
+
+        elif risk >= 40:
+
+            risk_display = (
+                f"🟠 {risk}"
+            )
+
+        else:
+
+            risk_display = (
+                f"🟢 {risk}"
+            )
 
         table.add_row(
 
@@ -110,12 +137,7 @@ def asset_viewer():
                 )
             ),
 
-            str(
-                asset.get(
-                    "risk_score",
-                    0
-                )
-            )
+            risk_display
 
         )
 
