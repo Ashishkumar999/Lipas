@@ -22,9 +22,12 @@ def asset_viewer():
             "[bold cyan]LIPAS ENTERPRISE ASSET DATABASE[/bold cyan]",
 
             border_style="bright_blue"
+
         )
 
     )
+
+    console.print()
 
     if not assets:
 
@@ -60,9 +63,21 @@ def asset_viewer():
     )
 
     table.add_column(
+        "Tech",
+        justify="center",
+        style="magenta"
+    )
+
+    table.add_column(
         "Findings",
         justify="center",
         style="red"
+    )
+
+    table.add_column(
+        "Risk",
+        justify="center",
+        style="bright_red"
     )
 
     for asset in assets:
@@ -72,16 +87,36 @@ def asset_viewer():
             asset["target"],
 
             str(
-                len(asset["ports"])
+                len(
+                    asset["ports"]
+                )
             ),
 
             str(
-                len(asset["services"])
+                len(
+                    asset["services"]
+                )
             ),
 
             str(
-                len(asset["findings"])
+                len(
+                    asset["technologies"]
+                )
+            ),
+
+            str(
+                len(
+                    asset["findings"]
+                )
+            ),
+
+            str(
+                asset.get(
+                    "risk_score",
+                    0
+                )
             )
+
         )
 
     console.print(

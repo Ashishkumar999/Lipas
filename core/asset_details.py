@@ -1,10 +1,5 @@
-from rich.console import (
-    Console
-)
-
-from rich.panel import (
-    Panel
-)
+from rich.console import Console
+from rich.panel import Panel
 
 from core.target_manager import (
     get_target
@@ -50,29 +45,63 @@ def asset_details():
     console.print()
 
     console.print(
-        f"[green]Ports:[/green]"
+        "[green]OPEN PORTS[/green]"
     )
 
-    console.print(
-        asset["ports"]
+    print(
+        "-" * 30
     )
+
+    for port in asset["ports"]:
+
+        console.print(
+            f"[green]{port}[/green]"
+        )
 
     console.print()
 
     console.print(
-        f"[yellow]Services:[/yellow]"
+        "[yellow]SERVICES[/yellow]"
     )
 
-    console.print(
-        asset["services"]
+    print(
+        "-" * 30
     )
+
+    for service in asset["services"]:
+
+        console.print(
+            f"[yellow]{service}[/yellow]"
+        )
 
     console.print()
 
     console.print(
-        f"[red]Findings:[/red]"
+        "[cyan]TECHNOLOGIES[/cyan]"
     )
 
-    console.print(
-        asset["findings"]
+    print(
+        "-" * 30
     )
+
+    for tech in asset["technologies"]:
+
+        console.print(
+            f"[cyan]{tech}[/cyan]"
+        )
+
+    console.print()
+
+    console.print(
+        "[red]FINDINGS[/red]"
+    )
+
+    print(
+        "-" * 30
+    )
+
+    for finding in asset["findings"]:
+
+        console.print(
+            finding
+        )

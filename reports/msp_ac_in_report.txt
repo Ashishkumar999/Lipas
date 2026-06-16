@@ -3,7 +3,19 @@ LIPAS VAPT REPORT
 =====================================
 
 Target : msp.ac.in
-Date   : 2026-06-16 08:29:45.171584
+Date   : 2026-06-16 14:10:20.932337
 
 OPEN PORTS
 ----------
+Port 80
+Port 443
+
+TECHNOLOGIES
+------------
+
+DIRECTORIES
+-----------
+
+SUBDOMAINS
+----------
+www.msp.ac.in

@@ -5,7 +5,10 @@
             80,
             443
         ],
-        "services": [],
+        "services": [
+            "HTTP",
+            "HTTPS"
+        ],
         "technologies": [],
         "findings": [],
         "risk_score": 0
@@ -36,6 +39,18 @@
         "target": "www.aiims.edu",
         "ports": [
             22,
+            443
+        ],
+        "services": [],
+        "technologies": [],
+        "findings": [],
+        "risk_score": 0
+    },
+    {
+        "target": "github.com",
+        "ports": [
+            22,
+            80,
             443
         ],
         "services": [],
