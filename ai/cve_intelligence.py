@@ -1,69 +1,26 @@
-from scanner.banner_fingerprint import (
-    FINGERPRINT_RESULTS
-)
-
-from scanner.cve_lookup import (
-    CVE_DATABASE
-)
-
-from reports.findings import (
-    add_finding
+from database.cve_database import (
+    load_cves
 )
 
 
 def cve_intelligence():
 
-    print("\n" + "=" * 50)
-    print("LIPAS CVE INTELLIGENCE")
-    print("=" * 50 + "\n")
+    cves = load_cves()
 
-    if not FINGERPRINT_RESULTS:
+    print()
 
-        print(
-            "No fingerprint data available."
+    print(
+        "CVE Intelligence"
+    )
+
+    print()
+
+    print(
+
+        "Known CVEs :",
+
+        len(
+            cves
         )
 
-        return
-
-    matches = 0
-
-    for software in FINGERPRINT_RESULTS:
-
-        cves = CVE_DATABASE.get(
-            software
-        )
-
-        if cves:
-
-            matches += 1
-
-            print(
-                f"Software: {software}"
-            )
-
-            print(
-                "Known CVEs:"
-            )
-
-            for cve in cves:
-
-                print(
-                    f" - {cve}"
-                )
-
-                add_finding(
-
-                    "HIGH",
-
-                    f"Known Vulnerability ({software})",
-
-                    f"Review {cve}"
-                )
-
-            print()
-
-    if matches == 0:
-
-        print(
-            "No matching CVEs found."
-        )
+    )

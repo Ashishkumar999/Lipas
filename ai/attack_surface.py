@@ -1,88 +1,61 @@
-from reports.findings import (
-    FINDINGS
+from core.asset_manager import (
+    get_asset
 )
 
-from reports.asset_correlation import (
-    ASSET_RESULTS
-)
-
-from reports.technology_profile import (
-    TECH_PROFILE
+from core.target_manager import (
+    get_target
 )
 
 
-def attack_surface_report():
+def attack_surface():
 
-    print("\n" + "=" * 50)
-    print("LIPAS ATTACK SURFACE INTELLIGENCE")
-    print("=" * 50 + "\n")
+    target = get_target()
 
-    print(
-        f"Assets: "
-        f"{len(ASSET_RESULTS)}"
+    asset = get_asset(
+        target
     )
 
-    print(
-        f"Technologies: "
-        f"{len(TECH_PROFILE)}"
-    )
+    if not asset:
 
-    print(
-        f"Findings: "
-        f"{len(FINDINGS)}"
-    )
+        return
 
-    print("\nRisk Overview\n")
-
-    high = 0
-    medium = 0
-    low = 0
-
-    for finding in FINDINGS:
-
-        severity = finding.get(
-            "severity",
-            ""
+    ports = len(
+        asset.get(
+            "ports",
+            []
         )
-
-        if severity == "HIGH":
-
-            high += 1
-
-        elif severity == "MEDIUM":
-
-            medium += 1
-
-        elif severity == "LOW":
-
-            low += 1
-
-    print(
-        f"HIGH   : {high}"
     )
 
-    print(
-        f"MEDIUM : {medium}"
-    )
-
-    print(
-        f"LOW    : {low}"
-    )
-
-    print("\nTechnology Stack\n")
-
-    if TECH_PROFILE:
-
-        for tech in TECH_PROFILE:
-
-            print(
-                f"[+] {tech}"
-            )
-
-    else:
-
-        print(
-            "No technologies discovered."
+    subs = len(
+        asset.get(
+            "subdomains",
+            []
         )
+    )
 
-    print("\nAssessment Complete")
+    dirs = len(
+        asset.get(
+            "directories",
+            []
+        )
+    )
+
+    print()
+
+    print(
+        "Attack Surface Summary"
+    )
+
+    print()
+
+    print(
+        f"Ports      : {ports}"
+    )
+
+    print(
+        f"Subdomains : {subs}"
+    )
+
+    print(
+        f"Directories: {dirs}"
+    )

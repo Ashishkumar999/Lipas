@@ -7,7 +7,7 @@ from core.target_manager import (
 )
 
 
-def risk_advisor():
+def risk_priority():
 
     target = get_target()
 
@@ -20,14 +20,19 @@ def risk_advisor():
         return
 
     score = asset.get(
+
         "risk_score",
+
         0
+
     )
 
     print()
 
     print(
-        "AI Risk Advisor"
+
+        "Risk Priority"
+
     )
 
     print()
@@ -35,23 +40,31 @@ def risk_advisor():
     if score >= 90:
 
         print(
-            "Immediate remediation required."
+
+            "CRITICAL 🔴"
+
         )
 
     elif score >= 70:
 
         print(
-            "High priority vulnerabilities present."
+
+            "HIGH 🔴"
+
         )
 
     elif score >= 40:
 
         print(
-            "Medium risk. Review findings."
+
+            "MEDIUM 🟠"
+
         )
 
     else:
 
         print(
-            "Low risk exposure."
+
+            "LOW 🟢"
+
         )

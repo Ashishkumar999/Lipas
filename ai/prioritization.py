@@ -1,66 +1,32 @@
-from reports.findings import FINDINGS
+from database.finding_db import (
+    load_findings
+)
 
 
-def vulnerability_prioritization():
+def prioritize():
 
-    print("\n" + "=" * 50)
-    print("LIPAS VULNERABILITY PRIORITIZATION")
-    print("=" * 50 + "\n")
+    findings = load_findings()
 
-    critical = []
-    high = []
-    medium = []
-    low = []
-
-    for finding in FINDINGS:
-
-        severity = finding["severity"]
-
-        if severity == "CRITICAL":
-
-            critical.append(
-                finding
-            )
-
-        elif severity == "HIGH":
-
-            high.append(
-                finding
-            )
-
-        elif severity == "MEDIUM":
-
-            medium.append(
-                finding
-            )
-
-        else:
-
-            low.append(
-                finding
-            )
+    print()
 
     print(
-        f"Critical : {len(critical)}"
+        "Priority Findings"
     )
 
-    print(
-        f"High     : {len(high)}"
-    )
+    print()
 
-    print(
-        f"Medium   : {len(medium)}"
-    )
+    for finding in findings:
 
-    print(
-        f"Low      : {len(low)}"
-    )
+        if finding.get(
+            "severity"
+        ) == "HIGH 🔴":
 
-    print("\nTop Priorities:\n")
+            print(
 
-    for finding in critical + high:
+                "[HIGH]",
 
-        print(
-            f"[{finding['severity']}] "
-            f"{finding['title']}"
-        )
+                finding.get(
+                    "title"
+                )
+
+            )
