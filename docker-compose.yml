@@ -1,0 +1,21 @@
+services:
+
+  lipas:
+
+    build: .
+
+    container_name: lipas
+
+    ports:
+
+      - "8001:8000"
+
+    volumes:
+
+      - ./reports:/app/reports
+
+      - ./logs:/app/logs
+
+      - ./database:/app/database
+
+    restart: unless-stopped

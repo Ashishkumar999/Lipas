@@ -30,3 +30,8 @@ def prioritize():
                 )
 
             )
+
+
+def vulnerability_prioritization():
+
+    prioritize()

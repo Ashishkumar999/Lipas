@@ -1,4 +1,8 @@
-from datetime import datetime
+import time
+
+from scheduler.background_scan import (
+    background_scan
+)
 
 
 def scheduler():
@@ -6,15 +10,21 @@ def scheduler():
     print()
 
     print(
-
-        "Scheduler"
-
+        "Scheduler Started"
     )
 
-    print()
+    while True:
 
-    print(
+        background_scan()
 
-        datetime.now()
+        print()
 
-    )
+        print(
+            "Sleeping 1 Hour..."
+        )
+
+        time.sleep(
+
+            3600
+
+        )

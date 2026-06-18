@@ -19,7 +19,7 @@ def analyze_attack_path(
 
             {
 
-                "target":target,
+                "target": target,
 
                 "path":
 
@@ -37,7 +37,7 @@ def analyze_attack_path(
 
                 {
 
-                    "target":target,
+                    "target": target,
 
                     "path":
 
@@ -46,3 +46,32 @@ def analyze_attack_path(
                 }
 
             )
+
+
+def attack_path_engine():
+
+    target = input(
+
+        "\nTarget: "
+
+    )
+
+    ports = []
+
+    findings = []
+
+    analyze_attack_path(
+
+        target,
+
+        ports,
+
+        findings
+
+    )
+
+    print(
+
+        "\nAttack Path Analysis Completed."
+
+    )

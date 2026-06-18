@@ -1,72 +1,58 @@
-from rich.console import Console
-
-from core.logger import (
-    error_log,
-    activity_log
+from plugins.plugin_registry import (
+    PLUGIN_REGISTRY
 )
-
-console = Console()
-
-PLUGINS = []
 
 
 def register_plugin(
-    plugin
+
+    name,
+
+    function
+
 ):
 
-    if plugin not in PLUGINS:
+    PLUGIN_REGISTRY[
+        name
+    ] = function
 
-        PLUGINS.append(
-            plugin
+
+def run_plugin(
+
+    name
+
+):
+
+    if name in PLUGIN_REGISTRY:
+
+        PLUGIN_REGISTRY[
+            name
+        ]()
+
+    else:
+
+        print(
+
+            "Plugin Not Found"
+
         )
 
 
-def run_plugins():
+def show_plugins():
 
-    console.print()
+    print()
 
-    console.print(
-        "[bold cyan]Running Plugins[/bold cyan]"
-    )
+    print(
 
-    console.print()
-
-    for plugin in PLUGINS:
-
-        try:
-
-            activity_log(
-
-                f"Running plugin: "
-
-                f"{plugin.__name__}"
-
-            )
-
-            plugin()
-
-        except Exception as e:
-
-            error_log(
-
-                f"{plugin.__name__}: {e}"
-
-            )
-
-            console.print(
-
-                f"[red]Plugin Error: "
-
-                f"{plugin.__name__}[/red]"
-
-            )
-
-            continue
-
-    console.print()
-
-    console.print(
-
-        "[green]Plugin Execution Finished[/green]"
+        "Loaded Plugins"
 
     )
+
+    print()
+
+    for plugin in PLUGIN_REGISTRY:
+
+        print(
+
+            plugin
+
+        )

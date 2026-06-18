@@ -149,6 +149,15 @@ from core.network_discovery import (
 
 
 
+from core.menu_registry import (
+    MENU_REGISTRY
+)
+
+
+from api.routes.web import (
+    router as web_router
+)
+
 
 from network.asset_discovery import (
     asset_discovery
@@ -169,6 +178,11 @@ from core.target_manager import (
     show_target
 )
 
+
+
+app.include_router(
+    web_router
+)
 
 
 def recon_scan(target):
@@ -282,21 +296,9 @@ def menu():
 
             recon_scan(target)
 
-        elif choice == "2":
-
-           network_discovery()
-
-        elif choice == "3":
-
-            analyze_headers()
-
         elif choice == "4":
 
             full_scan(target)
-
-        elif choice == "5":
-
-            detect_technology()
 
         elif choice == "6":
 
@@ -361,10 +363,6 @@ def menu():
            threaded_port_scan(
               target
            )
-
-        elif choice == "20":
-
-           detect_service()
 
         elif choice == "21":
 
@@ -510,17 +508,11 @@ def menu():
 
             show_target()
 
-        elif choice == "56":
+        elif choice in MENU_REGISTRY:
 
-            asset_viewer()
-
-        elif choice == "57":
-
-            asset_details()
-
-        elif choice == "58":
-
-            dashboard()
+           MENU_REGISTRY[
+               choice
+           ]()
 
         elif choice == "0":
 
