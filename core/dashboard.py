@@ -13,13 +13,13 @@ def dashboard():
 
     assets = load_assets()
 
-    total_assets = len(
-        assets
-    )
+    total_assets = len(assets)
 
     total_ports = 0
     total_services = 0
     total_tech = 0
+    total_subdomains = 0
+    total_directories = 0
     total_findings = 0
 
     high = 0
@@ -29,19 +29,45 @@ def dashboard():
     for asset in assets:
 
         total_ports += len(
-            asset["ports"]
+            asset.get(
+                "ports",
+                []
+            )
         )
 
         total_services += len(
-            asset["services"]
+            asset.get(
+                "services",
+                []
+            )
         )
 
         total_tech += len(
-            asset["technologies"]
+            asset.get(
+                "technologies",
+                []
+            )
+        )
+
+        total_subdomains += len(
+            asset.get(
+                "subdomains",
+                []
+            )
+        )
+
+        total_directories += len(
+            asset.get(
+                "directories",
+                []
+            )
         )
 
         total_findings += len(
-            asset["findings"]
+            asset.get(
+                "findings",
+                []
+            )
         )
 
         risk = asset.get(
@@ -69,22 +95,14 @@ def dashboard():
 
             "[bold cyan]LIPAS ENTERPRISE DASHBOARD[/bold cyan]",
 
-            border_style="bright_blue",
-
-            padding=(1, 5)
+            border_style="bright_blue"
 
         )
 
     )
 
     table = Table(
-
-        show_header=True,
-
-        header_style="bold white",
-
         border_style="bright_blue"
-
     )
 
     table.add_column(
@@ -93,7 +111,7 @@ def dashboard():
     )
 
     table.add_column(
-        "Value",
+        "Count",
         justify="center"
     )
 
@@ -118,6 +136,16 @@ def dashboard():
     )
 
     table.add_row(
+        "Subdomains",
+        str(total_subdomains)
+    )
+
+    table.add_row(
+        "Directories",
+        str(total_directories)
+    )
+
+    table.add_row(
         "Findings",
         str(total_findings)
     )
@@ -130,7 +158,7 @@ def dashboard():
 
         title="Risk Distribution",
 
-        border_style="bright_blue"
+        border_style="red"
 
     )
 
@@ -139,8 +167,7 @@ def dashboard():
     )
 
     risk_table.add_column(
-        "Count",
-        justify="center"
+        "Assets"
     )
 
     risk_table.add_row(

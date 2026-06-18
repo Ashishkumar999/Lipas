@@ -1,31 +1,63 @@
 import requests
 
+from core.target_manager import (
+    get_target
+)
+
+from core.asset_manager import (
+    add_directory
+)
+
+from core.ui import (
+    banner,
+    success
+)
 
 FOUND_DIRS = []
 
 
 with open(
+
     "wordlists/common_dirs.txt"
+
 ) as file:
 
     WORDLIST = [
+
         line.strip()
+
         for line in file
+
         if line.strip()
+
     ]
 
 
-def dir_discovery(target):
+def dir_discovery():
 
-    print("\n" + "=" * 50)
-    print("LIPAS DIRECTORY DISCOVERY")
-    print("=" * 50 + "\n")
+    target = get_target()
 
-    if not target.startswith("http"):
+    if not target:
+
+        return
+
+    if not target.startswith(
+
+        "http"
+
+    ):
 
         target = (
+
             "https://" + target
+
         )
+
+    banner(
+
+        "LIPAS DIRECTORY DISCOVERY"
+
+    )
 
     found = 0
 
@@ -33,38 +65,64 @@ def dir_discovery(target):
 
         try:
 
-            url = f"{target}/{item}"
+            url = (
+
+                f"{target}/{item}"
+
+            )
 
             response = requests.get(
+
                 url,
+
                 timeout=5,
+
                 allow_redirects=False
+
             )
 
             if response.status_code in [
+
                 200,
+
                 301,
+
                 302,
+
                 403
+
             ]:
 
-                result = (
-                    f"[{response.status_code}] "
-                    f"{url}"
+                success(
+
+                    f"[{response.status_code}] {url}"
+
                 )
 
-                print(result)
-
                 FOUND_DIRS.append(
-                    result
+
+                    url
+
+                )
+
+                add_directory(
+
+                    get_target(),
+
+                    url
+
                 )
 
                 found += 1
 
-        except Exception:
+        except:
 
             pass
 
+    print()
+
     print(
-        f"\nTotal Found: {found}"
+
+        f"Total Found: {found}"
+
     )

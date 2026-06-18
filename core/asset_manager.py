@@ -55,21 +55,33 @@ def create_asset(
 
             return
 
-    assets.append({
+    assets.append(
 
-        "target": target,
+        {
 
-        "ports": [],
+            "target": target,
 
-        "services": [],
+            "ip": "",
 
-        "technologies": [],
+            "ports": [],
 
-        "findings": [],
+            "services": [],
 
-        "risk_score": 0
+            "technologies": [],
 
-    })
+            "subdomains": [],
+
+            "directories": [],
+
+            "findings": [],
+
+            "risk_score": 0,
+
+            "last_scan": ""
+
+        }
+
+    )
 
     save_assets(
         assets
@@ -189,6 +201,50 @@ def add_technology(
 
     update_risk_score(
         target
+    )
+
+
+def add_subdomain(
+    target,
+    subdomain
+):
+
+    assets = load_assets()
+
+    for asset in assets:
+
+        if asset["target"] == target:
+
+            if subdomain not in asset["subdomains"]:
+
+                asset["subdomains"].append(
+                    subdomain
+                )
+
+    save_assets(
+        assets
+    )
+
+
+def add_directory(
+    target,
+    directory
+):
+
+    assets = load_assets()
+
+    for asset in assets:
+
+        if asset["target"] == target:
+
+            if directory not in asset["directories"]:
+
+                asset["directories"].append(
+                    directory
+                )
+
+    save_assets(
+        assets
     )
 
 

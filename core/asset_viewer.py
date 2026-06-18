@@ -21,29 +21,23 @@ def asset_viewer():
 
             "[bold cyan]LIPAS ENTERPRISE ASSET DATABASE[/bold cyan]",
 
-            border_style="bright_blue",
-
-            padding=(1, 5)
+            border_style="bright_blue"
 
         )
 
     )
 
-    console.print()
-
     if not assets:
 
         console.print(
-            "[bold red]No Assets Found[/bold red]"
+
+            "[red]No Assets Found[/red]"
+
         )
 
         return
 
     table = Table(
-
-        show_header=True,
-
-        header_style="bold white",
 
         border_style="bright_blue"
 
@@ -51,8 +45,7 @@ def asset_viewer():
 
     table.add_column(
         "Target",
-        style="cyan",
-        no_wrap=True
+        style="cyan"
     )
 
     table.add_column(
@@ -74,6 +67,18 @@ def asset_viewer():
     )
 
     table.add_column(
+        "Subs",
+        justify="center",
+        style="bright_blue"
+    )
+
+    table.add_column(
+        "Dirs",
+        justify="center",
+        style="bright_green"
+    )
+
+    table.add_column(
         "Findings",
         justify="center",
         style="red"
@@ -82,6 +87,10 @@ def asset_viewer():
     table.add_column(
         "Risk",
         justify="center"
+    )
+
+    table.add_column(
+        "Last Scan"
     )
 
     for asset in assets:
@@ -111,33 +120,71 @@ def asset_viewer():
 
         table.add_row(
 
-            asset["target"],
+            asset.get(
+                "target",
+                ""
+            ),
 
             str(
                 len(
-                    asset["ports"]
+                    asset.get(
+                        "ports",
+                        []
+                    )
                 )
             ),
 
             str(
                 len(
-                    asset["services"]
+                    asset.get(
+                        "services",
+                        []
+                    )
                 )
             ),
 
             str(
                 len(
-                    asset["technologies"]
+                    asset.get(
+                        "technologies",
+                        []
+                    )
                 )
             ),
 
             str(
                 len(
-                    asset["findings"]
+                    asset.get(
+                        "subdomains",
+                        []
+                    )
                 )
             ),
 
-            risk_display
+            str(
+                len(
+                    asset.get(
+                        "directories",
+                        []
+                    )
+                )
+            ),
+
+            str(
+                len(
+                    asset.get(
+                        "findings",
+                        []
+                    )
+                )
+            ),
+
+            risk_display,
+
+            asset.get(
+                "last_scan",
+                ""
+            )
 
         )
 

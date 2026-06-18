@@ -1,15 +1,47 @@
 import socket
 
+from core.target_manager import (
+    get_target
+)
 
-def banner_grab(target):
+from core.ui import (
+    banner,
+    success,
+    warning
+)
 
-    print("\n" + "=" * 50)
-    print("LIPAS BANNER GRABBER")
-    print("=" * 50 + "\n")
 
-    ports = [21, 22, 25, 80, 443]
+def banner_grab():
 
-    for port in ports:
+    target = get_target()
+
+    if not target:
+
+        warning(
+            "No Target Selected"
+        )
+
+        return
+
+    banner(
+        "LIPAS BANNER ANALYZER"
+    )
+
+    common_ports = [
+
+        21,
+        22,
+        25,
+        80,
+        110,
+        143,
+        443
+
+    ]
+
+    found = False
+
+    for port in common_ports:
 
         try:
 
@@ -21,29 +53,36 @@ def banner_grab(target):
             sock.settimeout(3)
 
             sock.connect(
-                (target, port)
+                (
+                    target,
+                    port
+                )
             )
 
-            try:
+            banner_data = sock.recv(
+                1024
+            )
 
-                banner = sock.recv(
-                    1024
-                ).decode().strip()
+            success(
+                f"Port {port}"
+            )
 
-                if banner:
-
-                    print(
-                        f"[{port}] {banner}"
-                    )
-
-            except:
-
-                print(
-                    f"[{port}] Connected"
+            print(
+                banner_data.decode(
+                    errors="ignore"
                 )
+            )
+
+            found = True
 
             sock.close()
 
         except:
 
             pass
+
+    if not found:
+
+        warning(
+            "No Banner Information Found"
+        )

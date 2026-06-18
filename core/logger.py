@@ -1,17 +1,79 @@
 from datetime import datetime
 
 
-def log_event(message):
+def write_log(
 
-    timestamp = datetime.now()
+    logfile,
+
+    message
+
+):
 
     with open(
-        "lipas.log",
+
+        logfile,
+
         "a",
+
         encoding="utf-8"
+
     ) as file:
 
-        file.write(
-            f"[{timestamp}] "
-            f"{message}\n"
+        timestamp = (
+
+            datetime.now()
+
         )
+
+        file.write(
+
+            f"[{timestamp}] "
+
+            f"{message}\n"
+
+        )
+
+
+def scanner_log(
+
+    message
+
+):
+
+    write_log(
+
+        "logs/scanner.log",
+
+        message
+
+    )
+
+
+def error_log(
+
+    message
+
+):
+
+    write_log(
+
+        "logs/error.log",
+
+        message
+
+    )
+
+
+def activity_log(
+
+    message
+
+):
+
+    write_log(
+
+        "logs/activity.log",
+
+        message
+
+    )

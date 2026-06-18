@@ -1,80 +1,48 @@
-from reports.finding_db import (
-    load_findings
-)
-
-from intelligence.attack_paths import (
-    ATTACK_PATHS
-)
-
-from intelligence.attack_priority import (
-    attack_priority
+from database.attack_path_db import (
+    add_attack_path
 )
 
 
-def attack_path_engine():
+def analyze_attack_path(
 
-    print("\n" + "=" * 60)
-    print("LIPAS ATTACK PATH ANALYSIS")
-    print("=" * 60 + "\n")
+    target,
 
-    findings = load_findings()
+    ports,
 
-    if not findings:
+    findings
 
-        print(
-            "No findings available."
+):
+
+    if 22 in ports:
+
+        add_attack_path(
+
+            {
+
+                "target":target,
+
+                "path":
+
+                "SSH Credential Attack"
+
+            }
+
         )
 
-        return
+    if 80 in ports:
 
-    for finding in findings:
+        if "Missing Content Security Policy" in findings:
 
-        title = finding.get(
-            "title",
-            ""
-        )
+            add_attack_path(
 
-        severity = finding.get(
-            "severity",
-            "LOW"
-        )
+                {
 
-        print(
-            f"Finding: {title}"
-        )
+                    "target":target,
 
-        print(
-            f"Priority: {attack_priority(severity)}"
-        )
+                    "path":
 
-        path_found = False
+                    "A05 Security Misconfiguration"
 
-        for key in ATTACK_PATHS:
+                }
 
-            if key.lower() in title.lower():
-
-                path_found = True
-
-                print(
-                    "\nPotential Attack Path:\n"
-                )
-
-                steps = ATTACK_PATHS[key]
-
-                for step in steps:
-
-                    print(step)
-
-                    if step != steps[-1]:
-
-                        print("↓")
-
-        if not path_found:
-
-            print(
-                "No attack path available."
             )
-
-        print(
-            "\n" + "-" * 60 + "\n"
-        )

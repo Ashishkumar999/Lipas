@@ -1,0 +1,11 @@
+{
+    "timeout": 10,
+    "threads": 50,
+    "user_agent": "LIPAS-Enterprise",
+    "theme": "dark",
+    "export_pdf": true,
+    "export_html": true,
+    "export_json": true,
+    "scan_delay": 0,
+    "max_ports": 1000
+}

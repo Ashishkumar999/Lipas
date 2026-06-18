@@ -10,8 +10,17 @@
             "HTTPS"
         ],
         "technologies": [],
-        "findings": [],
-        "risk_score": 0
+        "findings": [
+            "Missing CSP",
+            "Missing CSP",
+            "Missing HSTS",
+            "Missing X-Frame-Options"
+        ],
+        "risk_score": 56,
+        "ip": "",
+        "subdomains": [],
+        "directories": [],
+        "last_scan": ""
     },
     {
         "target": "google.com",
@@ -27,7 +36,11 @@
             "gws"
         ],
         "findings": [],
-        "risk_score": 18
+        "risk_score": 18,
+        "ip": "",
+        "subdomains": [],
+        "directories": [],
+        "last_scan": ""
     },
     {
         "target": "https://www.aiims.edu/index.php/en",
@@ -35,7 +48,11 @@
         "services": [],
         "technologies": [],
         "findings": [],
-        "risk_score": 0
+        "risk_score": 0,
+        "ip": "",
+        "subdomains": [],
+        "directories": [],
+        "last_scan": ""
     },
     {
         "target": "www.aiims.edu",
@@ -46,7 +63,11 @@
         "services": [],
         "technologies": [],
         "findings": [],
-        "risk_score": 0
+        "risk_score": 0,
+        "ip": "",
+        "subdomains": [],
+        "directories": [],
+        "last_scan": ""
     },
     {
         "target": "github.com",
@@ -55,12 +76,38 @@
             80,
             443
         ],
-        "services": [],
+        "services": [
+            "SSH",
+            "HTTP",
+            "HTTPS"
+        ],
         "technologies": [
             "github.com",
             "React"
         ],
         "findings": [],
-        "risk_score": 19
+        "risk_score": 28,
+        "ip": "",
+        "subdomains": [],
+        "directories": [],
+        "last_scan": ""
+    },
+    {
+        "target": "GOOGLE.COM",
+        "ports": [
+            80,
+            443
+        ],
+        "services": [
+            "HTTP",
+            "HTTPS"
+        ],
+        "technologies": [],
+        "findings": [],
+        "risk_score": 16,
+        "ip": "",
+        "subdomains": [],
+        "directories": [],
+        "last_scan": ""
     }
 ]

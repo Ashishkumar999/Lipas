@@ -143,6 +143,10 @@ from core.asset_details import (
 from core.dashboard import (
     dashboard
 )
+from core.network_discovery import (
+    network_discovery
+)
+
 
 
 
@@ -280,7 +284,7 @@ def menu():
 
         elif choice == "2":
 
-            scan_ports()
+           network_discovery()
 
         elif choice == "3":
 

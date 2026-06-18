@@ -1,0 +1,40 @@
+[
+    {
+        "target": "msp.ac.in",
+        "title": "Missing CSP",
+        "severity": "HIGH",
+        "owasp": "A05",
+        "cvss": 8.2,
+        "impact": "Clickjacking risk",
+        "remediation": "Implement CSP"
+    },
+    {
+        "target": "msp.ac.in",
+        "title": "Missing CSP",
+        "severity": "HIGH",
+        "owasp": "A05",
+        "cvss": 8.2,
+        "impact": "Clickjacking risk",
+        "remediation": "Implement CSP"
+    },
+    {
+        "target": "msp.ac.in",
+        "title": "Missing HSTS",
+        "severity": "MEDIUM \ud83d\udfe0",
+        "owasp": "A02",
+        "cvss": 6.5,
+        "impact": "MITM attacks possible",
+        "remediation": "Enable HSTS",
+        "status": "OPEN"
+    },
+    {
+        "target": "msp.ac.in",
+        "title": "Missing X-Frame-Options",
+        "severity": "MEDIUM \ud83d\udfe0",
+        "owasp": "A05",
+        "cvss": 5.5,
+        "impact": "Clickjacking risk",
+        "remediation": "Add X-Frame-Options",
+        "status": "OPEN"
+    }
+]
