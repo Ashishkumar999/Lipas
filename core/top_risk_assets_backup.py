@@ -23,19 +23,26 @@ def top_risk_assets():
     print()
 
     print(
+
         "Top Risk Assets"
+
     )
 
     print()
 
-    for asset in assets[:10]:
+    for asset in assets[:5]:
 
         print(
 
-            asset["target"],
+            asset.get(
+                "target"
+            ),
 
             "-",
 
-            asset["risk_score"]
+            asset.get(
+                "risk_score",
+                0
+            )
 
         )

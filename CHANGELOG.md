@@ -1,26 +1,34 @@
-# LIPAS Enterprise v4.0
+# LIPAS Enterprise v5.0
 
-## New Features
-
-- Plugin Framework
+## Core
 - Asset Database
 - Findings Database
 - Dashboard
-- AI Assistant
-- FastAPI API
+
+## Intelligence
+- Risk Engine
+- Attack Paths
+- AI Advisor
+
+## Platform
+- FastAPI
 - Web UI
-- Docker Support
 - Scheduler
-- Reporting Engine
+- Workers
 
-## Improvements
+## Database
+- SQLite
+- Repository Layer
 
-- Menu Refactoring
-- Risk Matrix
-- Top Risk Assets
-- Executive Summary
-- Compliance Dashboard
+## Notifications
+- Email
+- Slack
+- Telegram
 
-## Release
+## Docker Support
 
-Version 4.0
+## Plugin Framework
+
+## Authentication
+
+Version 5.0 Stable

@@ -1,15 +1,6 @@
-from database.finding_db import (
-    add_finding_to_db
-)
-
-from models.finding_status import (
-    STATUS_OPEN
-)
-
-from core.asset_manager import (
-    load_assets,
-    save_assets,
-    update_risk_score
+from database.finding_crud import (
+    insert_finding,
+    get_findings
 )
 
 
@@ -19,56 +10,43 @@ def add_finding(
 
     title,
 
-    severity,
-
-    owasp,
-
-    cvss,
-
-    impact,
-
-    remediation
+    severity
 
 ):
 
-    finding = {
+    insert_finding(
 
-        "target": target,
+        target,
 
-        "title": title,
+        title,
 
-        "severity": severity,
+        severity
 
-        "owasp": owasp,
-
-        "cvss": cvss,
-
-        "impact": impact,
-
-        "remediation": remediation,
-
-        "status": STATUS_OPEN
-
-    }
-
-    add_finding_to_db(
-        finding
     )
 
-    assets = load_assets()
 
-    for asset in assets:
+def load_findings():
 
-        if asset["target"] == target:
+    data = get_findings()
 
-            asset["findings"].append(
-                title
-            )
+    findings = []
 
-    save_assets(
-        assets
-    )
+    for row in data:
 
-    update_risk_score(
-        target
-    )
+        findings.append(
+
+            {
+
+                "id": row[0],
+
+                "target": row[1],
+
+                "title": row[2],
+
+                "severity": row[3]
+
+            }
+
+        )
+
+    return findings

@@ -1,19 +1,17 @@
-User
- ↓
 CLI / Browser
- ↓
+      ↓
 FastAPI
- ↓
+      ↓
 Plugin Manager
- ↓
-Plugins
- ↓
-Asset DB
-Findings DB
-Attack Path DB
- ↓
-Dashboard
- ↓
+      ↓
+Workers
+      ↓
+Cache Layer
+      ↓
+Repository Layer
+      ↓
+SQLite
+      ↓
 Reports
- ↓
-AI Layer
+      ↓
+Notifications

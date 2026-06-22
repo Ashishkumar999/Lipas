@@ -1,15 +1,21 @@
-from core.asset_manager import load_assets
+from core.asset_manager import (
+    load_assets
+)
 
 
 def risk_matrix():
 
-    print()
-
-    print("Risk Matrix")
+    assets = load_assets()
 
     print()
 
-    for asset in load_assets():
+    print(
+        "Risk Matrix"
+    )
+
+    print()
+
+    for asset in assets:
 
         score = asset.get(
             "risk_score",
@@ -18,28 +24,26 @@ def risk_matrix():
 
         if score >= 90:
 
-            risk = "CRITICAL 🔴"
+            level = "CRITICAL 🔴"
 
         elif score >= 70:
 
-            risk = "HIGH 🔴"
+            level = "HIGH 🔴"
 
         elif score >= 40:
 
-            risk = "MEDIUM 🟠"
+            level = "MEDIUM 🟠"
 
         else:
 
-            risk = "LOW 🟢"
+            level = "LOW 🟢"
 
         print(
 
-            asset.get(
-                "target"
-            ),
+            asset["target"],
 
             "->",
 
-            risk
+            level
 
         )

@@ -1,5 +1,7 @@
-VERSION = "3.0"
+VERSION = "5.0"
 
 BUILD = "Enterprise"
 
-RELEASE = "Alpha"
+RELEASE = "Stable"
+
+AUTHOR = "LIPAS"
