@@ -180,11 +180,6 @@ from core.target_manager import (
 
 
 
-app.include_router(
-    web_router
-)
-
-
 def recon_scan(target):
 
     dns_lookup(target)

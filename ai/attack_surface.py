@@ -1,61 +1,31 @@
-from core.asset_manager import (
-    get_asset
-)
-
-from core.target_manager import (
-    get_target
+from database.finding_db import (
+    load_findings
 )
 
 
 def attack_surface():
 
-    target = get_target()
+    findings = load_findings()
 
-    asset = get_asset(
-        target
-    )
+    print()
 
-    if not asset:
-
-        return
-
-    ports = len(
-        asset.get(
-            "ports",
-            []
-        )
-    )
-
-    subs = len(
-        asset.get(
-            "subdomains",
-            []
-        )
-    )
-
-    dirs = len(
-        asset.get(
-            "directories",
-            []
-        )
+    print(
+        "Attack Surface Overview"
     )
 
     print()
 
     print(
-        "Attack Surface Summary"
+
+        "Total Findings:",
+
+        len(
+            findings
+        )
+
     )
 
-    print()
 
-    print(
-        f"Ports      : {ports}"
-    )
+def attack_surface_report():
 
-    print(
-        f"Subdomains : {subs}"
-    )
-
-    print(
-        f"Directories: {dirs}"
-    )
+    attack_surface()

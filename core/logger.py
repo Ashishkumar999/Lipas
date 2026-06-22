@@ -77,3 +77,16 @@ def activity_log(
         message
 
     )
+
+
+def log_event(
+
+    message
+
+):
+
+    activity_log(
+
+        message
+
+    )

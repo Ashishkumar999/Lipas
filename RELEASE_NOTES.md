@@ -1,34 +1,22 @@
-# LIPAS Enterprise v2.0 Alpha
+# LIPAS Enterprise v4.0
 
-## Features
+## Modules
 
-- Asset Database
-- Findings Database
-- Dashboard
-- Plugin Framework
-- Logging System
-- Report Engine
-- Config System
-- Attack Path Engine
-- Severity Engine
-- OWASP Distribution
+CLI
+FastAPI
+Web UI
+Scheduler
+AI Assistant
+Plugin Framework
+Dashboard
+Reporting Engine
 
-## Stabilization
+## Future
 
-- Persistent Target Manager
-- Plugin Crash Protection
-- Asset Migration
-- Safe Dashboard
-- Safe Report Generation
-
-## Upcoming
-
-- SSL Plugin
-- JWT Plugin
-- Cookie Plugin
-- CORS Plugin
-- SQLi Plugin
-- XSS Plugin
-- SSRF Plugin
-- XXE Plugin
-- RCE Plugin
+RBAC
+JWT Authentication
+Redis Queue
+PostgreSQL
+React Dashboard
+LLM Integration
+Kubernetes

@@ -1,22 +1,49 @@
-# LIPAS
+# LIPAS Enterprise
 
-Lightweight Intelligent Penetration Assessment Suite
+Enterprise Attack Surface Management & Vulnerability Management Platform
+
+---
 
 ## Features
 
-- Reconnaissance
-- Port Scanner
-- Header Analysis
-- Security Headers Audit
-- Technology Detection
-- Banner Grabbing
-- DNS Security Check
-- SSL Inspector
-- Directory Discovery
-- HTML Reporting
-- Screenshot Capture
-- Security Scorecard
+- Asset Management
+- Finding Management
+- Attack Surface Management
+- Risk Intelligence
+- Compliance
+- AI Assistant
+- REST API
+- Dashboard
+- Docker Support
+- Scheduler
+- Plugin Framework
 
-## Author
+---
 
-Your Name
+## Architecture
+
+```
+User
+ ↓
+CLI / Browser
+ ↓
+FastAPI
+ ↓
+Plugin Manager
+ ↓
+Asset DB
+Findings DB
+Attack Path DB
+ ↓
+Dashboard
+ ↓
+Reports
+ ↓
+AI Layer
+```
+
+---
+
+## Version
+
+LIPAS Enterprise v4.0
